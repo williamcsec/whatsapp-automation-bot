@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Live Orders Dashboard - Active Reservations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2E86C1",
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#111827",
+                        "sidebar-dark": "#1B2631",
+                        "sidebar-item": "#2C3E50",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#1F2937",
+                        "text-light": "#1F2937",
+                        "text-dark": "#F9FAFB",
+                        "muted-light": "#6B7280",
+                        "muted-dark": "#9CA3AF",
+                        "whatsapp": "#25D366"
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                    boxShadow: {
+                        'kpi': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 1px 3px 0 rgba(0,0,0,0.1) inset',
+                        'kpi-dark': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(255,255,255,0.05) inset',
+                    }
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-display flex h-screen overflow-hidden antialiased">
+<aside class="w-20 lg:w-64 bg-sidebar-dark text-white flex flex-col transition-all duration-300 z-20 shrink-0 shadow-lg">
+<div class="h-16 flex items-center justify-center lg:justify-start lg:px-6 border-b border-gray-700">
+<span class="material-symbols-outlined text-primary text-2xl lg:mr-2">smart_toy</span>
+<span class="font-bold text-lg tracking-wide hidden lg:block">AutomatXpress</span>
+</div>
+<nav class="flex-1 py-6 flex flex-col gap-2 px-3 overflow-y-auto">
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] lg:mr-3">dashboard</span>
+<span class="font-medium hidden lg:block">Dashboard</span>
+</a>
+<a class="flex items-center px-3 py-2.5 bg-primary/20 text-primary rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] lg:mr-3">shopping_cart</span>
+<span class="font-medium hidden lg:block">Live Orders</span>
+<span class="ml-auto bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full hidden lg:block">3</span>
+</a>
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] lg:mr-3">inventory_2</span>
+<span class="font-medium hidden lg:block">Products</span>
+</a>
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] lg:mr-3">people</span>
+<span class="font-medium hidden lg:block">Customers</span>
+</a>
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] lg:mr-3">bar_chart</span>
+<span class="font-medium hidden lg:block">Analytics</span>
+</a>
+</nav>
+<div class="p-4 border-t border-gray-700">
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] lg:mr-3">settings</span>
+<span class="font-medium hidden lg:block">Settings</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden relative">
+<header class="h-16 bg-card-light dark:bg-card-dark border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 shrink-0 z-10">
+<div class="flex items-center gap-4">
+<h1 class="text-lg font-semibold text-text-light dark:text-text-dark hidden sm:flex items-center gap-2">
+<span class="text-muted-light dark:text-muted-dark font-normal">Dashboard /</span> Live Orders
+                </h1>
+<span class="text-sm font-medium text-muted-light dark:text-muted-dark bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700 ml-4">Karol Bagh Electronics</span>
+</div>
+<div class="flex items-center gap-4 lg:gap-6">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-full border border-green-200 dark:border-green-800">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+</span>
+<span class="text-xs font-medium">Bot Active</span>
+</div>
+<button class="relative p-2 text-muted-light hover:text-primary dark:text-muted-dark dark:hover:text-primary transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 h-2 w-2 bg-red-500 rounded-full border-2 border-white dark:border-card-dark"></span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-gray-200 dark:border-gray-700">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-blue-400 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                        A
+                    </div>
+<div class="hidden md:block text-sm">
+<p class="font-medium text-text-light dark:text-text-dark leading-none mb-1">Admin User</p>
+<p class="text-xs text-muted-light dark:text-muted-dark leading-none">Manager</p>
+</div>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-hidden flex flex-row">
+<div class="flex-1 overflow-y-auto p-4 lg:p-6 flex flex-col gap-6">
+<div class="flex overflow-x-auto gap-2 pb-2 hide-scrollbar">
+<button class="whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold bg-primary text-white shadow-sm border border-primary">
+                        Active Reservations (3)
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800 hover:bg-green-200 dark:hover:bg-green-800/50 transition-colors">
+                        Payment Pending (1)
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 border border-purple-200 dark:border-purple-800 hover:bg-purple-200 dark:hover:bg-purple-800/50 transition-colors">
+                        Discount Requests (2)
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium bg-card-light dark:bg-card-dark text-muted-light dark:text-muted-dark border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        Completed Today (8)
+                    </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium bg-card-light dark:bg-card-dark text-muted-light dark:text-muted-dark border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        Expired (5)
+                    </button>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 flex-1 flex flex-col overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700 text-xs uppercase tracking-wider text-muted-light dark:text-muted-dark font-semibold">
+<th class="p-4">Customer</th>
+<th class="p-4">Product</th>
+<th class="p-4">Reserved At</th>
+<th class="p-4">Countdown</th>
+<th class="p-4">Status</th>
+<th class="p-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-gray-800 text-sm">
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group cursor-pointer bg-blue-50/30 dark:bg-blue-900/10">
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="font-medium text-text-light dark:text-text-dark">Rahul Mehta</div>
+<a class="text-whatsapp hover:scale-110 transition-transform flex items-center" href="#" title="Chat on WhatsApp">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.087-.115-.708-.941-.708-1.793 0-.852.449-1.27.608-1.441.159-.171.348-.215.463-.215.115 0 .231.001.332.006.106.005.249-.04.391.3.144.348.491 1.196.535 1.284.044.088.073.19.014.306-.059.115-.088.19-.174.288-.088.101-.185.225-.264.302-.088.087-.18.181-.077.357.103.175.458.756.983 1.225.677.604 1.246.791 1.42.878.174.087.275.073.377-.043.101-.116.435-.506.551-.679.116-.172.232-.144.391-.087.159.058 1.011.477 1.184.564.174.087.289.13.332.202.045.073.045.421-.099.826zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.017 19.539h-.012c-1.348 0-2.67-.364-3.824-1.053l-4.128 1.082 1.1-4.024c-.759-1.316-1.159-2.816-1.158-4.35 0-4.755 3.868-8.623 8.626-8.623 2.299 0 4.463.896 6.089 2.524 1.625 1.626 2.52 3.791 2.52 6.091 0 4.757-3.868 8.653-8.623 8.653z"></path></svg>
+</a>
+</div>
+<div class="text-xs text-muted-light dark:text-muted-dark">+91 98765 43210</div>
+</td>
+<td class="p-4">
+<div class="font-medium text-text-light dark:text-text-dark">iPhone 13 128GB</div>
+<div class="text-xs text-muted-light dark:text-muted-dark">Midnight Black</div>
+</td>
+<td class="p-4 text-muted-light dark:text-muted-dark">10:15 AM</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 font-bold border border-orange-200 dark:border-orange-800">
+<span class="material-symbols-outlined text-[14px]">timer</span> 01:23
+                                        </span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-800">
+                                            PAYMENT LINK SENT
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<button class="text-muted-light hover:text-primary dark:text-muted-dark dark:hover:text-primary p-1">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group cursor-pointer">
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="font-medium text-text-light dark:text-text-dark">Priya Singh</div>
+<a class="text-whatsapp hover:scale-110 transition-transform flex items-center" href="#" title="Chat on WhatsApp">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.087-.115-.708-.941-.708-1.793 0-.852.449-1.27.608-1.441.159-.171.348-.215.463-.215.115 0 .231.001.332.006.106.005.249-.04.391.3.144.348.491 1.196.535 1.284.044.088.073.19.014.306-.059.115-.088.19-.174.288-.088.101-.185.225-.264.302-.088.087-.18.181-.077.357.103.175.458.756.983 1.225.677.604 1.246.791 1.42.878.174.087.275.073.377-.043.101-.116.435-.506.551-.679.116-.172.232-.144.391-.087.159.058 1.011.477 1.184.564.174.087.289.13.332.202.045.073.045.421-.099.826zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.017 19.539h-.012c-1.348 0-2.67-.364-3.824-1.053l-4.128 1.082 1.1-4.024c-.759-1.316-1.159-2.816-1.158-4.35 0-4.755 3.868-8.623 8.626-8.623 2.299 0 4.463.896 6.089 2.524 1.625 1.626 2.52 3.791 2.52 6.091 0 4.757-3.868 8.653-8.623 8.653z"></path></svg>
+</a>
+</div>
+<div class="text-xs text-muted-light dark:text-muted-dark">+91 99887 76655</div>
+</td>
+<td class="p-4">
+<div class="font-medium text-text-light dark:text-text-dark">Samsung S23 Ultra</div>
+<div class="text-xs text-muted-light dark:text-muted-dark">Phantom Black</div>
+</td>
+<td class="p-4 text-muted-light dark:text-muted-dark">10:30 AM</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 font-bold border border-green-200 dark:border-green-800">
+<span class="material-symbols-outlined text-[14px]">timer</span> 08:44
+                                        </span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800">
+                                            PAYMENT INITIATED
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<button class="text-muted-light hover:text-primary dark:text-muted-dark dark:hover:text-primary p-1">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group cursor-pointer border-l-4 border-purple-500">
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="font-medium text-text-light dark:text-text-dark">Amit Kumar</div>
+<a class="text-whatsapp hover:scale-110 transition-transform flex items-center" href="#" title="Chat on WhatsApp">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.087-.115-.708-.941-.708-1.793 0-.852.449-1.27.608-1.441.159-.171.348-.215.463-.215.115 0 .231.001.332.006.106.005.249-.04.391.3.144.348.491 1.196.535 1.284.044.088.073.19.014.306-.059.115-.088.19-.174.288-.088.101-.185.225-.264.302-.088.087-.18.181-.077.357.103.175.458.756.983 1.225.677.604 1.246.791 1.42.878.174.087.275.073.377-.043.101-.116.435-.506.551-.679.116-.172.232-.144.391-.087.159.058 1.011.477 1.184.564.174.087.289.13.332.202.045.073.045.421-.099.826zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.017 19.539h-.012c-1.348 0-2.67-.364-3.824-1.053l-4.128 1.082 1.1-4.024c-.759-1.316-1.159-2.816-1.158-4.35 0-4.755 3.868-8.623 8.626-8.623 2.299 0 4.463.896 6.089 2.524 1.625 1.626 2.52 3.791 2.52 6.091 0 4.757-3.868 8.653-8.623 8.653z"></path></svg>
+</a>
+</div>
+<div class="text-xs text-muted-light dark:text-muted-dark">+91 91234 56789</div>
+</td>
+<td class="p-4">
+<div class="font-medium text-text-light dark:text-text-dark">OnePlus 11</div>
+<div class="text-xs text-muted-light dark:text-muted-dark">Titan Black</div>
+</td>
+<td class="p-4 text-muted-light dark:text-muted-dark">10:45 AM</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 font-bold border border-purple-200 dark:border-purple-800">
+<span class="material-symbols-outlined text-[14px]">timer</span> 12:55
+                                        </span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 border border-purple-200 dark:border-purple-800">
+                                            DISCOUNT REQUESTED
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="bg-purple-100 hover:bg-purple-200 text-purple-700 text-xs font-semibold px-2 py-1 rounded border border-purple-200 transition-colors">Negotiate</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="w-80 bg-card-light dark:bg-card-dark border-l border-gray-200 dark:border-gray-800 flex flex-col h-full shrink-0 shadow-[-4px_0_15px_-3px_rgba(0,0,0,0.05)] z-10 overflow-y-auto">
+<div class="p-5 border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center justify-between mb-1">
+<h2 class="text-lg font-semibold text-text-light dark:text-text-dark">Order Details</h2>
+<button class="text-muted-light hover:text-gray-900 dark:text-muted-dark dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="text-[11px] font-mono text-muted-light dark:text-muted-dark uppercase tracking-widest">Order ID: <span class="text-primary font-bold">#AX-98721</span></p>
+</div>
+<div class="flex-1 p-5 space-y-6">
+<div>
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-lg">AK</div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<h3 class="font-semibold text-text-light dark:text-text-dark leading-tight">Amit Kumar</h3>
+<a class="text-whatsapp hover:scale-110 transition-transform flex items-center" href="#" title="Chat on WhatsApp">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.087-.115-.708-.941-.708-1.793 0-.852.449-1.27.608-1.441.159-.171.348-.215.463-.215.115 0 .231.001.332.006.106.005.249-.04.391.3.144.348.491 1.196.535 1.284.044.088.073.19.014.306-.059.115-.088.19-.174.288-.088.101-.185.225-.264.302-.088.087-.18.181-.077.357.103.175.458.756.983 1.225.677.604 1.246.791 1.42.878.174.087.275.073.377-.043.101-.116.435-.506.551-.679.116-.172.232-.144.391-.087.159.058 1.011.477 1.184.564.174.087.289.13.332.202.045.073.045.421-.099.826zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.017 19.539h-.012c-1.348 0-2.67-.364-3.824-1.053l-4.128 1.082 1.1-4.024c-.759-1.316-1.159-2.816-1.158-4.35 0-4.755 3.868-8.623 8.626-8.623 2.299 0 4.463.896 6.089 2.524 1.625 1.626 2.52 3.791 2.52 6.091 0 4.757-3.868 8.653-8.623 8.653z"></path></svg>
+</a>
+</div>
+<p class="text-xs text-muted-light dark:text-muted-dark">+91 91234 56789</p>
+</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 text-xs border border-gray-100 dark:border-gray-700">
+<div class="flex justify-between mb-1">
+<span class="text-muted-light dark:text-muted-dark">Customer History</span>
+<span class="font-medium text-text-light dark:text-text-dark">0 Past Orders</span>
+</div>
+<div class="flex justify-between">
+<span class="text-muted-light dark:text-muted-dark">Status</span>
+<span class="font-medium text-purple-600 dark:text-purple-400">Negotiating</span>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-800 pt-5">
+<h4 class="text-xs font-semibold text-muted-light dark:text-muted-dark uppercase tracking-wider mb-4">Discount Negotiation</h4>
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="text-[11px] font-medium text-muted-light dark:text-muted-dark uppercase">Client's Requested Discount</label>
+<div class="flex gap-2">
+<div class="relative flex-1">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-muted-light font-medium">₹</span>
+<input class="w-full pl-7 pr-3 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-semibold focus:ring-primary focus:border-primary" type="text" value="2,500"/>
+</div>
+<button class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 px-3 py-2 rounded-lg text-xs font-bold transition-colors">Update</button>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[11px] font-medium text-muted-light dark:text-muted-dark uppercase">Your Counter Offer</label>
+<div class="flex gap-2">
+<div class="relative flex-1">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-muted-light font-medium">₹</span>
+<input class="w-full pl-7 pr-3 py-2 bg-white dark:bg-card-dark border border-primary/50 dark:border-primary/50 rounded-lg text-sm font-semibold focus:ring-primary focus:border-primary" placeholder="Enter amount" type="text"/>
+</div>
+<button class="bg-primary hover:bg-blue-600 text-white px-3 py-2 rounded-lg text-xs font-bold transition-colors">Update</button>
+</div>
+</div>
+<div class="flex gap-2 pt-2">
+<button class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg text-xs transition-colors shadow-sm">Approve Request</button>
+<button class="flex-1 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 text-red-600 dark:text-red-400 font-bold py-2 rounded-lg text-xs border border-red-200 dark:border-red-800 transition-colors">Reject</button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-800 pt-5">
+<h4 class="text-sm font-semibold text-muted-light dark:text-muted-dark uppercase tracking-wider mb-3">Product Info</h4>
+<div class="flex gap-3 mb-3">
+<div class="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-gray-400 text-3xl">smartphone</span>
+</div>
+<div>
+<h3 class="font-semibold text-text-light dark:text-text-dark">OnePlus 11</h3>
+<p class="text-xs text-muted-light dark:text-muted-dark">Titan Black</p>
+<p class="text-sm font-bold text-text-light dark:text-text-dark mt-1">₹56,999</p>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-800 pt-5 pb-6">
+<h4 class="text-sm font-semibold text-muted-light dark:text-muted-dark uppercase tracking-wider mb-3">Timeline</h4>
+<div class="relative border-l border-gray-200 dark:border-gray-700 ml-2 space-y-4">
+<div class="relative pl-4">
+<div class="absolute -left-1.5 top-1 h-3 w-3 rounded-full bg-purple-500 border-2 border-white dark:border-card-dark"></div>
+<p class="text-sm font-medium text-text-light dark:text-text-dark">Discount Requested</p>
+<p class="text-xs text-muted-light dark:text-muted-dark">10:48 AM</p>
+</div>
+<div class="relative pl-4">
+<div class="absolute -left-1.5 top-1 h-3 w-3 rounded-full bg-gray-300 dark:bg-gray-600 border-2 border-white dark:border-card-dark"></div>
+<p class="text-sm font-medium text-text-light dark:text-text-dark">Item Reserved</p>
+<p class="text-xs text-muted-light dark:text-muted-dark">10:45 AM</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-5 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 sticky bottom-0">
+<button class="w-full bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg shadow-sm transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+                        Mark Fulfilled
+                    </button>
+<button class="w-full mt-3 bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-text-light dark:text-text-dark font-medium py-2 px-4 rounded-lg transition-colors text-sm">
+                        Cancel Reservation
+                    </button>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

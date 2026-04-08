@@ -1,0 +1,110 @@
+{
+  "version": 3,
+  "skills": {
+    "design-md": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/google-labs-code/stitch-skills.git",
+      "skillPath": "skills/design-md/SKILL.md",
+      "skillFolderHash": "0a84781f35accede7cf373a4129d93bfb7651930",
+      "installedAt": "2026-02-28T16:56:37.303Z",
+      "updatedAt": "2026-02-28T16:56:37.303Z"
+    },
+    "enhance-prompt": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/google-labs-code/stitch-skills.git",
+      "skillPath": "skills/enhance-prompt/SKILL.md",
+      "skillFolderHash": "ee608061b9209907f5f296670483884c5eb20827",
+      "installedAt": "2026-02-28T16:56:37.675Z",
+      "updatedAt": "2026-02-28T16:56:37.675Z"
+    },
+    "react:components": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/google-labs-code/stitch-skills.git",
+      "skillPath": "skills/react-components/SKILL.md",
+      "skillFolderHash": "6bc31b18750870f79ea6152851175c9bd303e26b",
+      "installedAt": "2026-02-28T16:56:38.062Z",
+      "updatedAt": "2026-02-28T16:56:38.062Z"
+    },
+    "remotion": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/google-labs-code/stitch-skills.git",
+      "skillPath": "skills/remotion/SKILL.md",
+      "skillFolderHash": "ff9c6b50c98e38fa3d46560391b16894731d3bc3",
+      "installedAt": "2026-02-28T16:56:38.436Z",
+      "updatedAt": "2026-02-28T16:56:38.436Z"
+    },
+    "shadcn-ui": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/google-labs-code/stitch-skills.git",
+      "skillPath": "skills/shadcn-ui/SKILL.md",
+      "skillFolderHash": "def8b780a6f3857ca964d1a02c144ef6f86fb21c",
+      "installedAt": "2026-02-28T16:56:38.848Z",
+      "updatedAt": "2026-02-28T16:56:38.848Z"
+    },
+    "stitch-loop": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/google-labs-code/stitch-skills.git",
+      "skillPath": "skills/stitch-loop/SKILL.md",
+      "skillFolderHash": "560ccf6d41fcb8189c609b78f7b5e20c4be9f051",
+      "installedAt": "2026-02-28T16:56:39.225Z",
+      "updatedAt": "2026-02-28T16:56:39.225Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "c2f31172b6f256272305a5e6e7228b258446899f",
+      "installedAt": "2026-02-28T16:56:49.814Z",
+      "updatedAt": "2026-02-28T16:56:49.814Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "cline",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-cli",
+    "opencode",
+    "antigravity",
+    "augment",
+    "claude-code",
+    "openclaw",
+    "codebuddy",
+    "command-code",
+    "continue",
+    "cortex",
+    "crush",
+    "droid",
+    "goose",
+    "junie",
+    "iflow-cli",
+    "kilo",
+    "kiro-cli",
+    "kode",
+    "mcpjam",
+    "mistral-vibe",
+    "openhands",
+    "pi",
+    "qoder",
+    "qwen-code",
+    "roo",
+    "trae",
+    "trae-cn",
+    "zencoder",
+    "neovate",
+    "pochi",
+    "adal"
+  ]
+}

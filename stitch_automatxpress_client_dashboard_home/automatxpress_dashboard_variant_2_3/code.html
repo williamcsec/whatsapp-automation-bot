@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutomatXpress Settings - Staff Members</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2E86C1",
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#111827",
+                        "sidebar-dark": "#1B2631",
+                        "sidebar-item": "#2C3E50",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#1F2937",
+                        "text-light": "#1F2937",
+                        "text-dark": "#F9FAFB",
+                        "muted-light": "#6B7280",
+                        "muted-dark": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                    boxShadow: {
+                        'kpi': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 1px 3px 0 rgba(0,0,0,0.1) inset',
+                        'kpi-dark': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(255,255,255,0.05) inset',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-display flex h-screen overflow-hidden antialiased">
+<aside class="w-20 lg:w-64 bg-sidebar-dark text-white flex flex-col transition-all duration-300 z-20 shrink-0 shadow-lg">
+<div class="h-16 flex items-center justify-center lg:justify-start lg:px-6 border-b border-gray-700">
+<span class="material-icons text-primary text-2xl lg:mr-2">smart_toy</span>
+<span class="font-bold text-lg tracking-wide hidden lg:block">AutomatXpress</span>
+</div>
+<nav class="flex-1 py-6 flex flex-col gap-2 px-3 overflow-y-auto">
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-icons text-[20px] lg:mr-3">dashboard</span>
+<span class="font-medium hidden lg:block">Dashboard</span>
+</a>
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-icons text-[20px] lg:mr-3">shopping_cart</span>
+<span class="font-medium hidden lg:block">Live Orders</span>
+<span class="ml-auto bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full hidden lg:block">3</span>
+</a>
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-icons text-[20px] lg:mr-3">inventory_2</span>
+<span class="font-medium hidden lg:block">Products</span>
+</a>
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-icons text-[20px] lg:mr-3">people</span>
+<span class="font-medium hidden lg:block">Customers</span>
+</a>
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-icons text-[20px] lg:mr-3">bar_chart</span>
+<span class="font-medium hidden lg:block">Analytics</span>
+</a>
+</nav>
+<div class="p-4 border-t border-gray-700">
+<a class="flex items-center px-3 py-2.5 bg-primary/20 text-primary rounded-lg transition-colors group" href="#">
+<span class="material-icons text-[20px] lg:mr-3">settings</span>
+<span class="font-medium hidden lg:block">Settings</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<header class="h-16 bg-card-light dark:bg-card-dark border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 shrink-0 z-10">
+<div class="flex items-center gap-4">
+<h1 class="text-lg font-semibold text-text-light dark:text-text-dark hidden sm:block">Settings</h1>
+<span class="text-muted-light dark:text-muted-dark hidden sm:block">/</span>
+<span class="text-sm font-medium text-muted-light dark:text-muted-dark bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700">Karol Bagh Electronics</span>
+</div>
+<div class="flex items-center gap-4 lg:gap-6">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-full border border-green-200 dark:border-green-800">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+</span>
+<span class="text-xs font-medium">Bot Active</span>
+</div>
+<button class="relative p-2 text-muted-light hover:text-primary dark:text-muted-dark dark:hover:text-primary transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+<span class="material-icons">notifications_none</span>
+<span class="absolute top-1.5 right-1.5 h-2 w-2 bg-red-500 rounded-full border-2 border-white dark:border-card-dark"></span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-gray-200 dark:border-gray-700">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-blue-400 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                        A
+                    </div>
+<div class="hidden md:block text-sm">
+<p class="font-medium text-text-light dark:text-text-dark leading-none mb-1">Admin User</p>
+<p class="text-xs text-muted-light dark:text-muted-dark leading-none">Manager</p>
+</div>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-4 lg:p-6">
+<div class="flex flex-col lg:flex-row gap-6 h-full">
+<div class="w-full lg:w-64 shrink-0 flex flex-col gap-1">
+<h2 class="text-sm font-semibold text-muted-light dark:text-muted-dark uppercase tracking-wider mb-2 px-3">General</h2>
+<a class="flex items-center px-3 py-2 text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors" href="#">
+<span class="material-icons text-muted-light dark:text-muted-dark mr-3 text-[20px]">store</span>
+<span class="font-medium text-sm">Store Details</span>
+</a>
+<a class="flex items-center px-3 py-2 text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors" href="#">
+<span class="material-icons text-muted-light dark:text-muted-dark mr-3 text-[20px]">smart_toy</span>
+<span class="font-medium text-sm">Bot Configuration</span>
+</a>
+<a class="flex items-center px-3 py-2 text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors" href="#">
+<span class="material-icons text-muted-light dark:text-muted-dark mr-3 text-[20px]">chat</span>
+<span class="font-medium text-sm">WhatsApp Integration</span>
+</a>
+<h2 class="text-sm font-semibold text-muted-light dark:text-muted-dark uppercase tracking-wider mt-6 mb-2 px-3">Team</h2>
+<a class="flex items-center px-3 py-2 bg-blue-50 dark:bg-blue-900/20 text-primary rounded-lg border-l-4 border-primary transition-colors" href="#">
+<span class="material-icons text-primary mr-3 text-[20px]">group</span>
+<span class="font-medium text-sm">Staff Members</span>
+</a>
+<a class="flex items-center px-3 py-2 text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors" href="#">
+<span class="material-icons text-muted-light dark:text-muted-dark mr-3 text-[20px]">shield</span>
+<span class="font-medium text-sm">Roles &amp; Permissions</span>
+</a>
+<h2 class="text-sm font-semibold text-muted-light dark:text-muted-dark uppercase tracking-wider mt-6 mb-2 px-3">Billing</h2>
+<a class="flex items-center px-3 py-2 text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors" href="#">
+<span class="material-icons text-muted-light dark:text-muted-dark mr-3 text-[20px]">credit_card</span>
+<span class="font-medium text-sm">Subscription</span>
+</a>
+</div>
+<div class="flex-1 bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden flex flex-col">
+<div class="p-6 border-b border-gray-200 dark:border-gray-800 flex justify-between items-center bg-white dark:bg-card-dark z-10">
+<div>
+<h2 class="text-xl font-bold text-text-light dark:text-text-dark">Staff Members</h2>
+<p class="text-sm text-muted-light dark:text-muted-dark mt-1">Manage who has access to your store dashboard.</p>
+</div>
+<button class="bg-primary hover:bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors shadow-sm flex items-center gap-2">
+<span class="material-icons text-[18px]">person_add</span>
+                                Invite Staff Member
+                            </button>
+</div>
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700 text-xs uppercase tracking-wider text-muted-light dark:text-muted-dark">
+<th class="p-4 font-semibold">Name</th>
+<th class="p-4 font-semibold">Role</th>
+<th class="p-4 font-semibold">Last Active</th>
+<th class="p-4 font-semibold">Status</th>
+<th class="p-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm">A</div>
+<div>
+<p class="font-medium text-sm text-text-light dark:text-text-dark">Admin User</p>
+<p class="text-xs text-muted-light dark:text-muted-dark">admin@karolbaghelectronics.com</p>
+</div>
+</div>
+</td>
+<td class="p-4 text-sm text-text-light dark:text-text-dark">Owner</td>
+<td class="p-4 text-sm text-muted-light dark:text-muted-dark">Just now</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Active
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<button class="text-muted-light dark:text-muted-dark hover:text-primary transition-colors p-1">
+<span class="material-icons text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm">R</div>
+<div>
+<p class="font-medium text-sm text-text-light dark:text-text-dark">Rahul Sharma</p>
+<p class="text-xs text-muted-light dark:text-muted-dark">rahul@karolbaghelectronics.com</p>
+</div>
+</div>
+</td>
+<td class="p-4 text-sm text-text-light dark:text-text-dark">Manager</td>
+<td class="p-4 text-sm text-muted-light dark:text-muted-dark">2 hours ago</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Active
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<button class="text-muted-light dark:text-muted-dark hover:text-primary transition-colors p-1">
+<span class="material-icons text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-sm">P</div>
+<div>
+<p class="font-medium text-sm text-text-light dark:text-text-dark">Priya Patel</p>
+<p class="text-xs text-muted-light dark:text-muted-dark">priya@karolbaghelectronics.com</p>
+</div>
+</div>
+</td>
+<td class="p-4 text-sm text-text-light dark:text-text-dark">Sales Agent</td>
+<td class="p-4 text-sm text-muted-light dark:text-muted-dark">Yesterday</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300">
+<span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span> Offline
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<button class="text-muted-light dark:text-muted-dark hover:text-primary transition-colors p-1">
+<span class="material-icons text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center font-bold text-sm">V</div>
+<div>
+<p class="font-medium text-sm text-text-light dark:text-text-dark">Vikram Singh</p>
+<p class="text-xs text-muted-light dark:text-muted-dark">vikram@karolbaghelectronics.com</p>
+</div>
+</div>
+</td>
+<td class="p-4 text-sm text-text-light dark:text-text-dark">Support</td>
+<td class="p-4 text-sm text-muted-light dark:text-muted-dark">-</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
+<span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span> Pending
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<button class="text-muted-light dark:text-muted-dark hover:text-primary transition-colors p-1">
+<span class="material-icons text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

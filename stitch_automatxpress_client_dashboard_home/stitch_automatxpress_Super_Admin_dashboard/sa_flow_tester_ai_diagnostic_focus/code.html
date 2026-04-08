@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Pipeline Diagnostics - Super Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#58A6FF",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0D1117",
+                        "panel-dark": "#161B22",
+                        "border-dark": "#30363D",
+                        "text-muted": "#8B949E",
+                        "success": "#238636"
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0D1117; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #30363D; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background-dark text-slate-100 font-display">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between border-b border-border-dark bg-panel-dark px-6 py-3 shrink-0">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">hub</span>
+<h2 class="text-slate-100 text-lg font-bold leading-tight tracking-tight">Super Admin Flow Tester</h2>
+</div>
+<nav class="flex items-center gap-6">
+<a class="text-slate-100 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-medium border-b-2 border-primary pb-4 mt-4" href="#">Flows</a>
+<a class="text-text-muted text-sm font-medium hover:text-slate-100 transition-colors" href="#">Logs</a>
+<a class="text-text-muted text-sm font-medium hover:text-slate-100 transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-sm">search</span>
+<input class="bg-background-dark border border-border-dark text-sm rounded-lg pl-10 pr-4 py-1.5 w-64 focus:ring-1 focus:ring-primary focus:border-primary outline-none" placeholder="Search flows or trace IDs..."/>
+</div>
+<button class="p-2 rounded-lg bg-border-dark/30 hover:bg-border-dark text-slate-100">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
+<span class="material-symbols-outlined text-primary text-xl">person</span>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-border-dark bg-panel-dark flex flex-col p-4 shrink-0">
+<div class="mb-8">
+<h1 class="text-slate-100 text-sm font-semibold uppercase tracking-wider text-text-muted px-2 mb-4">Diagnostics</h1>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted hover:bg-border-dark/30 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-xl">analytics</span>
+<span class="text-sm font-medium">Pipeline Trace</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted hover:bg-border-dark/30 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">memory</span>
+<span class="text-sm font-medium">AI Metrics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted hover:bg-border-dark/30 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">database</span>
+<span class="text-sm font-medium">Vector Store</span>
+</a>
+</div>
+</div>
+<div class="mt-auto">
+<button class="w-full bg-primary text-background-dark font-bold py-2.5 rounded-lg flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined">play_arrow</span>
+                        New Test Run
+                    </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden relative">
+<!-- Breadcrumbs & Actions -->
+<div class="p-6 pb-2">
+<div class="flex items-center gap-2 text-xs text-text-muted mb-4">
+<span>Project Omega</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span>Customer Service Bot</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary font-medium">Trace #TR-99042</span>
+</div>
+<div class="flex items-center justify-between mb-6">
+<div>
+<h2 class="text-2xl font-bold text-slate-100 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">dynamic_feed</span>
+                                Groq AI Node: <span class="font-mono text-primary/80 tracking-tight">node_ai_7721</span>
+</h2>
+<p class="text-text-muted text-sm mt-1">Status: <span class="text-success font-semibold px-2 py-0.5 bg-success/10 rounded">SUCCESS</span> — Execution time: 1.42s</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-border-dark/50 border border-border-dark rounded-lg text-sm font-medium hover:bg-border-dark transition-all">View Schema</button>
+<button class="px-4 py-2 bg-primary/20 border border-primary/30 text-primary rounded-lg text-sm font-medium hover:bg-primary/30 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                                Re-run Step
+                            </button>
+</div>
+</div>
+<!-- Metric Cards -->
+<div class="grid grid-cols-4 gap-4 mb-6">
+<div class="bg-panel-dark border border-border-dark rounded-xl p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-text-muted text-xs font-medium">INPUT TOKENS</span>
+<span class="material-symbols-outlined text-primary text-sm">input</span>
+</div>
+<p class="text-2xl font-mono font-bold text-slate-100">1,402</p>
+<p class="text-[10px] text-text-muted mt-1 uppercase tracking-tighter">Approx. $0.00021 cost</p>
+</div>
+<div class="bg-panel-dark border border-border-dark rounded-xl p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-text-muted text-xs font-medium">OUTPUT TOKENS</span>
+<span class="material-symbols-outlined text-primary text-sm">output</span>
+</div>
+<p class="text-2xl font-mono font-bold text-slate-100">512</p>
+<p class="text-[10px] text-text-muted mt-1 uppercase tracking-tighter">Max Context: 4,096</p>
+</div>
+<div class="bg-panel-dark border border-border-dark rounded-xl p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-text-muted text-xs font-medium">TEMPERATURE</span>
+<span class="material-symbols-outlined text-primary text-sm">thermostat</span>
+</div>
+<p class="text-2xl font-mono font-bold text-slate-100">0.70</p>
+<div class="w-full bg-border-dark h-1 rounded-full mt-3">
+<div class="bg-primary h-full rounded-full" style="width: 70%"></div>
+</div>
+</div>
+<div class="bg-panel-dark border border-border-dark rounded-xl p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-text-muted text-xs font-medium">TOP_P</span>
+<span class="material-symbols-outlined text-primary text-sm">filter_alt</span>
+</div>
+<p class="text-2xl font-mono font-bold text-slate-100">0.90</p>
+<div class="w-full bg-border-dark h-1 rounded-full mt-3">
+<div class="bg-primary h-full rounded-full" style="width: 90%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Expanded Step Details -->
+<div class="flex-1 overflow-y-auto px-6 custom-scrollbar pb-64">
+<div class="space-y-4">
+<!-- AI Prompt Configuration -->
+<div class="bg-panel-dark border border-border-dark rounded-xl overflow-hidden">
+<div class="bg-border-dark/30 px-4 py-2 border-b border-border-dark flex items-center justify-between">
+<h3 class="text-xs font-bold text-text-muted uppercase tracking-widest">Model Configuration</h3>
+<span class="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded font-mono">llama-3.1-70b-versatile</span>
+</div>
+<div class="p-4 grid grid-cols-2 gap-8">
+<div>
+<label class="text-[10px] text-text-muted uppercase font-bold block mb-2">System Message</label>
+<div class="bg-background-dark p-3 rounded-lg border border-border-dark text-sm text-slate-300 leading-relaxed italic">
+                                        "You are a helpful customer service assistant for AlphaCorp. Use the provided context to answer questions accurately and politely. If the information is not available, ask the user for clarification."
+                                    </div>
+</div>
+<div>
+<label class="text-[10px] text-text-muted uppercase font-bold block mb-2">User Input</label>
+<div class="bg-background-dark p-3 rounded-lg border border-border-dark text-sm text-slate-300 leading-relaxed">
+                                        "How do I reset my API keys for the production environment? I've already checked the settings page but the button is greyed out."
+                                    </div>
+</div>
+</div>
+</div>
+<!-- Raw Response -->
+<div class="bg-panel-dark border border-border-dark rounded-xl overflow-hidden">
+<div class="bg-border-dark/30 px-4 py-2 border-b border-border-dark flex items-center justify-between">
+<h3 class="text-xs font-bold text-text-muted uppercase tracking-widest">Assistant Response</h3>
+<div class="flex gap-4">
+<span class="text-[10px] text-text-muted">Stop Reason: <span class="text-slate-100">end_turn</span></span>
+<span class="text-[10px] text-text-muted">Provider: <span class="text-slate-100">GroqCloud</span></span>
+</div>
+</div>
+<div class="p-4">
+<div class="bg-background-dark p-4 rounded-lg border border-border-dark text-sm text-slate-100 leading-relaxed border-l-4 border-primary">
+                                    To reset your production API keys, you must first ensure that your account has 'Admin' level permissions. If the button is greyed out, it typically means one of two things: 1. You are in a 'Viewer' only role, or 2. There is a pending security verification on your account. Please check your email for a verification link sent at 14:02 UTC.
+                                </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Terminal Overlay -->
+<div class="absolute bottom-0 left-0 right-0 bg-[#010409] border-t border-border-dark h-56 flex flex-col shadow-2xl">
+<div class="flex items-center justify-between px-4 py-2 bg-panel-dark border-b border-border-dark shrink-0">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-2 text-xs font-bold text-text-muted">
+<span class="material-symbols-outlined text-sm">terminal</span>
+                                RAW LOGS: TRACE_NODE_AI_7721
+                            </span>
+<div class="h-4 w-px bg-border-dark"></div>
+<span class="text-[10px] font-mono text-success">CONNECTED</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-text-muted hover:text-slate-100"><span class="material-symbols-outlined text-sm">content_copy</span></button>
+<button class="text-text-muted hover:text-slate-100"><span class="material-symbols-outlined text-sm">download</span></button>
+<button class="text-text-muted hover:text-slate-100"><span class="material-symbols-outlined text-sm">expand_content</span></button>
+</div>
+</div>
+<div class="flex-1 overflow-auto p-4 font-mono text-[11px] text-blue-300 custom-scrollbar leading-tight bg-black/50">
+<div class="mb-1"><span class="text-text-muted">[14:22:01.004]</span> <span class="text-primary">INFO:</span> Initializing Groq API connection...</div>
+<div class="mb-1"><span class="text-text-muted">[14:22:01.120]</span> <span class="text-primary">INFO:</span> Payload size: 4.2kb</div>
+<div class="mb-1 text-slate-500 whitespace-pre">{
+  "model": "llama-3.1-70b-versatile",
+  "messages": [
+    { "role": "system", "content": "You are a helpful customer service..." },
+    { "role": "user", "content": "How do I reset my API keys..." }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 512,
+  "top_p": 0.9,
+  "stream": false
+}</div>
+<div class="mb-1 mt-2"><span class="text-text-muted">[14:22:02.422]</span> <span class="text-success">SUCCESS:</span> Received response in 1302ms</div>
+<div class="mb-1 text-slate-500 whitespace-pre">{
+  "id": "chatcmpl-7721-abc-990",
+  "object": "chat.completion",
+  "created": 1723456789,
+  "usage": {
+    "prompt_tokens": 1402,
+    "completion_tokens": 512,
+    "total_tokens": 1914
+  }
+}</div>
+<div class="mb-1 animate-pulse"><span class="text-text-muted">[14:22:02.500]</span> <span class="text-primary">READY:</span> Waiting for next event... _</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

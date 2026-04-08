@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutomatXpress ADMIN - Client Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#57a5ff",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0D1117",
+                        "sidebar-dark": "#010409",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 bg-sidebar-dark border-r border-slate-800 flex flex-col">
+<div class="p-6 flex flex-col gap-6">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">terminal</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold tracking-tight text-slate-100 uppercase">AutomatXpress</h1>
+<p class="text-[10px] text-slate-500 font-medium">SUPER ADMIN CONSOLE</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="text-sm font-medium">Clients</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">list_alt</span>
+<span class="text-sm font-medium">Global Logs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+<span class="text-sm font-medium">API Usage</span>
+</a>
+<div class="h-px bg-slate-800 my-4"></div>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 px-2">
+<div class="size-8 rounded-full bg-primary/30 flex items-center justify-center border border-primary/50 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Admin user avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIFO8sou_2rkGxIyUdpez3G5rcaRWyENv1Xj7SqPhpKTYiu45LMHxN3w-T-jsz2qlD3ixddOUnNX9xsdKFRv3pAwmZgsCimKOR6T-8x1FH4zT388bpmmcHV_UZrcoaXOMiljfvGFILnh606UOZYKFWS99cPvQeC6qT2a0WnB6ILz7VLmH12g3STiw9oILfdaBei0sm5VYV-iNASwmq6Lb6KFBmRevrTsc7Pxr_PcU1tzD9EafeqA0sVGSetAdcVchmXnOayPY7S24"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold">Admin User</span>
+<span class="text-[10px] text-slate-500">Super Admin Access</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Top Header -->
+<header class="bg-background-dark border-b border-slate-800 flex flex-col">
+<!-- Breadcrumbs & Actions -->
+<div class="px-8 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 text-slate-400 text-sm">
+<span>Clients</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+<div class="flex items-center gap-3">
+<h2 class="text-xl font-bold text-slate-100">Karol Bagh Electronics</h2>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20">
+<span class="size-1.5 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-[10px] font-bold text-green-500 uppercase tracking-wider">Online</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold rounded-lg border border-slate-700 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-slate-400">terminal</span>
+                            Debug Mode: <span class="text-slate-400 uppercase">OFF</span>
+</button>
+<button class="px-3 py-1.5 bg-primary hover:bg-primary/90 text-background-dark text-xs font-bold rounded-lg transition-all">
+                            Enable 2hr
+                        </button>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<div class="px-8 flex gap-8">
+<a class="px-1 py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 text-sm font-medium transition-all" href="#">Overview</a>
+<a class="px-1 py-3 border-b-2 border-primary text-primary text-sm font-medium" href="#">Live Logs</a>
+<a class="px-1 py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 text-sm font-medium transition-all" href="#">API Costs</a>
+<a class="px-1 py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 text-sm font-medium transition-all" href="#">Flow Tester</a>
+<a class="px-1 py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 text-sm font-medium transition-all" href="#">Redis Inspector</a>
+<a class="px-1 py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 text-sm font-medium transition-all" href="#">Reservation Audit</a>
+</div>
+</header>
+<!-- Console Content -->
+<div class="flex-1 flex flex-col bg-background-dark overflow-hidden p-6 gap-4">
+<!-- Filters Bar -->
+<div class="flex items-center justify-between gap-4 bg-slate-900/50 p-2 rounded-xl border border-slate-800">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-xs font-semibold text-slate-500 px-2">LEVEL:</span>
+<button class="px-3 py-1 text-xs font-medium bg-slate-700 text-slate-100 rounded-lg">All</button>
+<button class="px-3 py-1 text-xs font-medium bg-transparent hover:bg-slate-800 text-slate-400 rounded-lg">Error</button>
+<button class="px-3 py-1 text-xs font-medium bg-transparent hover:bg-slate-800 text-slate-400 rounded-lg">Warning</button>
+<button class="px-3 py-1 text-xs font-medium bg-transparent hover:bg-slate-800 text-slate-400 rounded-lg">Info</button>
+<button class="px-3 py-1 text-xs font-medium bg-transparent hover:bg-slate-800 text-slate-400 rounded-lg">Debug</button>
+<div class="w-px h-4 bg-slate-800 mx-2"></div>
+<div class="relative">
+<button class="flex items-center gap-2 px-3 py-1 text-xs font-medium text-slate-300 hover:text-slate-100 transition-colors">
+<span>Category: All</span>
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-[10px] font-mono text-slate-500 italic">
+<span class="size-2 rounded-full bg-primary/50 animate-pulse"></span>
+                            Streaming live — SSE connected
+                        </div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 text-slate-400 hover:text-slate-100">
+<span class="material-symbols-outlined text-lg">do_not_disturb_on</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-100">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Log Table Area -->
+<div class="flex-1 overflow-auto rounded-xl border border-slate-800 bg-[#0D1117] font-mono text-sm leading-relaxed">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-[#161b22] border-b border-slate-800 text-[10px] text-slate-500 uppercase tracking-wider">
+<tr>
+<th class="px-4 py-2 font-medium w-48">Timestamp</th>
+<th class="px-4 py-2 font-medium w-24">Level</th>
+<th class="px-4 py-2 font-medium w-32">Category</th>
+<th class="px-4 py-2 font-medium">Message</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-800/50">
+<tr class="hover:bg-slate-800/30 group">
+<td class="px-4 py-2 text-slate-500 tabular-nums">2023-11-24 14:32:01.442</td>
+<td class="px-4 py-2">
+<span class="flex items-center gap-1.5 text-red-500">
+<span class="material-symbols-outlined text-[14px] fill-1">error</span>
+                                        ERROR
+                                    </span>
+</td>
+<td class="px-4 py-2 text-slate-400">payment</td>
+<td class="px-4 py-2 text-slate-300">Webhook signature mismatch - <span class="text-slate-600">signature: e3b0c442...</span></td>
+</tr>
+<tr class="hover:bg-slate-800/30 group">
+<td class="px-4 py-2 text-slate-500 tabular-nums">2023-11-24 14:31:58.129</td>
+<td class="px-4 py-2">
+<span class="flex items-center gap-1.5 text-green-500">
+<span class="material-symbols-outlined text-[14px] fill-1">check_circle</span>
+                                        INFO
+                                    </span>
+</td>
+<td class="px-4 py-2 text-slate-400">reservation</td>
+<td class="px-4 py-2 text-slate-300">Product reserved - <span class="text-primary/70 italic">SKU-99827-BLUE</span></td>
+</tr>
+<tr class="hover:bg-slate-800/30 group">
+<td class="px-4 py-2 text-slate-500 tabular-nums">2023-11-24 14:31:55.004</td>
+<td class="px-4 py-2">
+<span class="flex items-center gap-1.5 text-blue-500">
+<span class="material-symbols-outlined text-[14px] fill-1">info</span>
+                                        INFO
+                                    </span>
+</td>
+<td class="px-4 py-2 text-slate-400">ai</td>
+<td class="px-4 py-2 text-slate-300">Groq response received - <span class="text-slate-600">latency: 142ms</span></td>
+</tr>
+<tr class="hover:bg-slate-800/30 group">
+<td class="px-4 py-2 text-slate-500 tabular-nums">2023-11-24 14:31:50.887</td>
+<td class="px-4 py-2">
+<span class="flex items-center gap-1.5 text-yellow-500">
+<span class="material-symbols-outlined text-[14px] fill-1">warning</span>
+                                        WARN
+                                    </span>
+</td>
+<td class="px-4 py-2 text-slate-400">system</td>
+<td class="px-4 py-2 text-slate-300">Redis latency spike detected - <span class="text-yellow-500/70">85ms &gt; threshold (50ms)</span></td>
+</tr>
+<tr class="hover:bg-slate-800/30 group">
+<td class="px-4 py-2 text-slate-500 tabular-nums">2023-11-24 14:31:44.211</td>
+<td class="px-4 py-2">
+<span class="flex items-center gap-1.5 text-slate-500">
+<span class="material-symbols-outlined text-[14px] fill-1">bug_report</span>
+                                        DEBUG
+                                    </span>
+</td>
+<td class="px-4 py-2 text-slate-400">inventory</td>
+<td class="px-4 py-2 text-slate-500">Cache hit for query: <span class="bg-slate-800 px-1 rounded">get_item_count:1044</span></td>
+</tr>
+<tr class="hover:bg-slate-800/30 group">
+<td class="px-4 py-2 text-slate-500 tabular-nums">2023-11-24 14:31:40.098</td>
+<td class="px-4 py-2">
+<span class="flex items-center gap-1.5 text-green-500">
+<span class="material-symbols-outlined text-[14px] fill-1">check_circle</span>
+                                        INFO
+                                    </span>
+</td>
+<td class="px-4 py-2 text-slate-400">auth</td>
+<td class="px-4 py-2 text-slate-300">Session started for user: <span class="text-primary/70">customer_4492</span></td>
+</tr>
+<tr class="hover:bg-slate-800/30 group">
+<td class="px-4 py-2 text-slate-500 tabular-nums">2023-11-24 14:31:38.776</td>
+<td class="px-4 py-2">
+<span class="flex items-center gap-1.5 text-blue-500">
+<span class="material-symbols-outlined text-[14px] fill-1">info</span>
+                                        INFO
+                                    </span>
+</td>
+<td class="px-4 py-2 text-slate-400">ai</td>
+<td class="px-4 py-2 text-slate-300">Prompting Llama-3-70b - <span class="text-slate-600">tokens: 452</span></td>
+</tr>
+<tr class="hover:bg-slate-800/30 group">
+<td class="px-4 py-2 text-slate-500 tabular-nums">2023-11-24 14:31:35.102</td>
+<td class="px-4 py-2">
+<span class="flex items-center gap-1.5 text-slate-500">
+<span class="material-symbols-outlined text-[14px] fill-1">bug_report</span>
+                                        DEBUG
+                                    </span>
+</td>
+<td class="px-4 py-2 text-slate-400">system</td>
+<td class="px-4 py-2 text-slate-500">Inbound SSE connection established from 192.168.1.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer Console Stats -->
+<div class="flex items-center justify-between text-[11px] text-slate-500 bg-slate-900 px-4 py-2 rounded-lg border border-slate-800">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5"><span class="size-1.5 rounded-full bg-slate-500"></span> Total Logs: 24,091</span>
+<span class="flex items-center gap-1.5"><span class="size-1.5 rounded-full bg-red-500"></span> Errors (1h): 14</span>
+<span class="flex items-center gap-1.5"><span class="size-1.5 rounded-full bg-primary"></span> Throttling: 0%</span>
+</div>
+<div class="flex items-center gap-4">
+<span>REGION: AP-SOUTH-1 (Mumbai)</span>
+<span>SERVER: NODE-74-GX</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,35 @@
+{
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "roots": [
+        "<rootDir>/src/__tests__"
+    ],
+    "testMatch": [
+        "**/*.test.ts"
+    ],
+    "transform": {
+        "^.+\\.tsx?$": [
+            "ts-jest",
+            {
+                "tsconfig": {
+                    "module": "commonjs"
+                }
+            }
+        ]
+    },
+    "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js",
+        "jsx",
+        "json"
+    ],
+    "detectOpenHandles": true,
+    "forceExit": true,
+    "testTimeout": 30000,
+    "globals": {
+        "ts-jest": {
+            "diagnostics": false
+        }
+    }
+}

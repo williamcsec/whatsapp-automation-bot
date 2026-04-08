@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Invoice Preview &amp; Actions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec37",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102213",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen antialiased">
+<div class="flex h-screen flex-col overflow-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-primary/20 bg-background-light dark:bg-background-dark px-10 py-3 shrink-0">
+<div class="flex items-center gap-4 text-slate-900 dark:text-slate-100">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined text-2xl">receipt_long</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">AutomatXpress Invoice</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-bold text-primary" href="#">Invoices</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Settings</a>
+</nav>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-slate-900 text-sm font-bold transition-transform hover:scale-105">
+<span>New Invoice</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 bg-primary/20 flex items-center justify-center border border-primary/30" data-alt="User Avatar Placeholder">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex flex-1 overflow-hidden">
+<!-- Left Panel: PDF Preview -->
+<section class="flex-1 flex flex-col overflow-y-auto border-r border-primary/20 p-8 bg-slate-50 dark:bg-slate-900/50">
+<div class="mb-6 flex items-baseline justify-between">
+<div>
+<h1 class="text-3xl font-bold tracking-tight">Invoice Preview</h1>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Previewing #INV-2023-001</p>
+</div>
+</div>
+<!-- A4 Aspect Ratio Container for PDF Preview -->
+<div class="mx-auto w-full max-w-[800px] aspect-[1/1.414] bg-white text-slate-900 rounded-lg shadow-xl shadow-primary/5 border border-primary/10 overflow-hidden flex flex-col p-12">
+<!-- Invoice Header -->
+<div class="flex justify-between items-start border-b border-slate-200 pb-8 mb-8">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-3xl text-primary">bolt</span>
+<span class="text-2xl font-black tracking-tight text-slate-800">AutomatXpress</span>
+</div>
+<div class="text-sm text-slate-500 leading-relaxed">
+                                123 Tech Boulevard<br/>
+                                Silicon District, SD 90210<br/>
+                                contact@automatxpress.com<br/>
+                                +1 (555) 019-8372
+                            </div>
+</div>
+<div class="text-right">
+<h2 class="text-4xl font-light text-slate-300 mb-4 tracking-widest uppercase">Invoice</h2>
+<div class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-right">
+<span class="text-slate-500 font-medium">Invoice No:</span>
+<span class="font-bold text-slate-800">INV-2023-001</span>
+<span class="text-slate-500 font-medium">Date:</span>
+<span class="text-slate-800">Oct 24, 2023</span>
+<span class="text-slate-500 font-medium">Due Date:</span>
+<span class="text-slate-800">Nov 07, 2023</span>
+</div>
+</div>
+</div>
+<!-- Billed To -->
+<div class="mb-8">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Billed To</h3>
+<div class="text-sm text-slate-700 leading-relaxed">
+<span class="font-bold text-slate-900 text-base block mb-1">Acme Innovations Corp.</span>
+                            Attn: Jane Doe<br/>
+                            456 Startup Lane, Suite 100<br/>
+                            Innovation City, IC 10110<br/>
+                            jane.doe@acmeinnovations.com
+                        </div>
+</div>
+<!-- Table -->
+<div class="flex-1">
+<table class="w-full text-sm">
+<thead>
+<tr class="border-b-2 border-slate-800 text-left">
+<th class="py-3 font-bold text-slate-800 uppercase tracking-wider text-xs">Description</th>
+<th class="py-3 font-bold text-slate-800 uppercase tracking-wider text-xs text-center w-20">Qty</th>
+<th class="py-3 font-bold text-slate-800 uppercase tracking-wider text-xs text-right w-24">Unit Price</th>
+<th class="py-3 font-bold text-slate-800 uppercase tracking-wider text-xs text-right w-20">GST</th>
+<th class="py-3 font-bold text-slate-800 uppercase tracking-wider text-xs text-right w-28">Amount</th>
+</tr>
+</thead>
+<tbody class="text-slate-700">
+<tr class="border-b border-slate-100">
+<td class="py-4">
+<div class="font-medium text-slate-900">Laptop Pro 15"</div>
+<div class="text-xs text-slate-500 mt-1">M2 Chip, 16GB RAM, 512GB SSD</div>
+</td>
+<td class="py-4 text-center">1</td>
+<td class="py-4 text-right">$1,200.00</td>
+<td class="py-4 text-right">10%</td>
+<td class="py-4 text-right font-medium text-slate-900">$1,320.00</td>
+</tr>
+<tr class="border-b border-slate-100">
+<td class="py-4">
+<div class="font-medium text-slate-900">Wireless Mouse</div>
+<div class="text-xs text-slate-500 mt-1">Ergonomic, Bluetooth 5.0</div>
+</td>
+<td class="py-4 text-center">2</td>
+<td class="py-4 text-right">$25.00</td>
+<td class="py-4 text-right">10%</td>
+<td class="py-4 text-right font-medium text-slate-900">$55.00</td>
+</tr>
+<tr class="border-b border-slate-100">
+<td class="py-4">
+<div class="font-medium text-slate-900">Mechanical Keyboard</div>
+<div class="text-xs text-slate-500 mt-1">Tactile Switches, RGB</div>
+</td>
+<td class="py-4 text-center">1</td>
+<td class="py-4 text-right">$150.00</td>
+<td class="py-4 text-right">10%</td>
+<td class="py-4 text-right font-medium text-slate-900">$165.00</td>
+</tr>
+<tr class="border-b border-slate-100">
+<td class="py-4">
+<div class="font-medium text-slate-900">USB-C Hub</div>
+<div class="text-xs text-slate-500 mt-1">7-in-1, 4K HDMI, PD</div>
+</td>
+<td class="py-4 text-center">3</td>
+<td class="py-4 text-right">$40.00</td>
+<td class="py-4 text-right">10%</td>
+<td class="py-4 text-right font-medium text-slate-900">$132.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Totals -->
+<div class="flex justify-end pt-6 border-t border-slate-200 mt-6">
+<div class="w-72">
+<div class="flex justify-between py-2 text-sm text-slate-600">
+<span>Subtotal</span>
+<span class="font-medium text-slate-900">$1,495.00</span>
+</div>
+<div class="flex justify-between py-2 text-sm text-slate-600">
+<span>Total GST (10%)</span>
+<span class="font-medium text-slate-900">$149.50</span>
+</div>
+<div class="flex justify-between py-3 mt-2 border-t-2 border-slate-800 text-lg font-bold text-slate-900">
+<span>Grand Total</span>
+<span>$1,644.50</span>
+</div>
+</div>
+</div>
+<!-- Footer/Terms -->
+<div class="mt-12 text-xs text-slate-400 border-t border-slate-100 pt-6">
+<p class="font-bold text-slate-500 mb-1">Terms &amp; Conditions</p>
+<p>Payment is due within 14 days. Please make checks payable to AutomatXpress. For bank transfers, use routing #123456789, Account #987654321.</p>
+</div>
+</div>
+</section>
+<!-- Right Panel: Actions & Settings -->
+<aside class="w-[400px] shrink-0 bg-background-light dark:bg-background-dark border-l border-primary/20 flex flex-col overflow-y-auto">
+<div class="p-6 border-b border-primary/20">
+<h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">send</span>
+                        Actions
+                    </h3>
+<div class="space-y-3">
+<button class="w-full flex items-center justify-center gap-2 h-12 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold transition-colors shadow-sm">
+<span class="material-symbols-outlined">chat</span>
+                            Send via WhatsApp
+                        </button>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 h-10 rounded-lg border border-primary/30 bg-primary/5 hover:bg-primary/10 text-slate-900 dark:text-slate-100 font-medium transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+                                Download PDF
+                            </button>
+<button class="flex items-center justify-center gap-2 h-10 rounded-lg border border-primary/30 bg-primary/5 hover:bg-primary/10 text-slate-900 dark:text-slate-100 font-medium transition-colors">
+<span class="material-symbols-outlined text-lg">print</span>
+                                Print
+                            </button>
+</div>
+</div>
+</div>
+<div class="p-6 flex-1">
+<h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">settings</span>
+                        Invoice Settings
+                    </h3>
+<div class="space-y-6">
+<!-- Toggle 1 -->
+<div class="flex items-center justify-between">
+<div>
+<p class="font-medium text-slate-900 dark:text-slate-100">Show GST Breakdown</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Display tax details per item</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Toggle 2 -->
+<div class="flex items-center justify-between">
+<div>
+<p class="font-medium text-slate-900 dark:text-slate-100">Include Store Terms</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Show payment instructions</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Currency Select -->
+<div class="pt-4 border-t border-primary/10">
+<label class="block font-medium text-slate-900 dark:text-slate-100 mb-2">Currency</label>
+<select class="bg-background-light dark:bg-background-dark border border-primary/30 text-slate-900 dark:text-slate-100 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
+<option>USD ($)</option>
+<option>EUR (€)</option>
+<option>GBP (£)</option>
+<option>AUD ($)</option>
+</select>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</div>
+</body></html>

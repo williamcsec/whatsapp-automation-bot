@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutomatXpress - Super Admin Business Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0D1117",
+                        "content-dark": "#1A1F2E",
+                        "slate-100": "#f1f5f9",
+                        "slate-300": "#cbd5e1",
+                        "slate-400": "#94a3b8",
+                        "slate-700": "#334155",
+                        "slate-800": "#1e293b",
+                        "slate-900": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden font-display">
+<div class="flex h-full grow">
+<!-- Sidebar -->
+<aside class="flex h-screen min-h-[700px] w-64 flex-col justify-between bg-content-dark p-4 border-r border-slate-800 shrink-0 sticky top-0">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 items-center mb-6">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 bg-primary/20 flex items-center justify-center text-primary font-bold text-xl">A</div>
+<div class="flex flex-col">
+<h1 class="text-slate-100 text-base font-bold leading-normal">AutomatXpress</h1>
+<p class="text-slate-400 text-xs font-medium leading-normal">Super Admin</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium leading-normal">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="text-sm font-medium leading-normal">Clients</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span class="text-sm font-medium leading-normal">Revenue</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">cloud</span>
+<span class="text-sm font-medium leading-normal">Infra</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium leading-normal">Settings</span>
+</a>
+</nav>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors cursor-pointer mt-auto">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="text-sm font-medium leading-normal">Sign Out</span>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex flex-1 flex-col overflow-y-auto">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-800 bg-content-dark px-8 py-4 sticky top-0 z-10">
+<div class="flex items-center gap-4 text-slate-100">
+<span class="material-symbols-outlined text-primary text-2xl">monitoring</span>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Business Overview</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex rounded-lg bg-slate-800 p-1">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-md h-8 px-4 bg-primary text-white text-xs font-bold leading-normal tracking-[0.015em] transition-colors shadow-sm">
+                                Business Mode
+                            </button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-md h-8 px-4 text-slate-400 hover:text-slate-100 text-xs font-semibold leading-normal tracking-[0.015em] transition-colors">
+                                Developer Mode
+                            </button>
+</div>
+<div class="w-px h-6 bg-slate-800 mx-2"></div>
+<button class="flex items-center justify-center rounded-full size-9 bg-slate-800 text-slate-400 hover:text-slate-100 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-full size-9 bg-slate-800 text-slate-400 hover:text-slate-100 transition-colors">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</header>
+<div class="p-8 max-w-[1400px] mx-auto w-full flex flex-col gap-6">
+<!-- Row 1: KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-content-dark border border-slate-800 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center justify-between mb-1">
+<p class="text-slate-400 text-sm font-medium leading-normal">MRR</p>
+<span class="material-symbols-outlined text-slate-500 text-[18px]">account_balance_wallet</span>
+</div>
+<p class="text-slate-100 text-3xl font-bold leading-tight">₹1,50,000</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[#10b981] text-[16px]">trending_up</span>
+<p class="text-[#10b981] text-sm font-semibold leading-normal">+15% <span class="text-slate-500 font-normal">vs last month</span></p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-content-dark border border-slate-800 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center justify-between mb-1">
+<p class="text-slate-400 text-sm font-medium leading-normal">Active Clients</p>
+<span class="material-symbols-outlined text-slate-500 text-[18px]">domain</span>
+</div>
+<p class="text-slate-100 text-3xl font-bold leading-tight">3</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[#10b981] text-[16px]">trending_up</span>
+<p class="text-[#10b981] text-sm font-semibold leading-normal">+1 <span class="text-slate-500 font-normal">new this month</span></p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-content-dark border border-slate-800 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center justify-between mb-1">
+<p class="text-slate-400 text-sm font-medium leading-normal">Avg Revenue</p>
+<span class="material-symbols-outlined text-slate-500 text-[18px]">stacked_line_chart</span>
+</div>
+<p class="text-slate-100 text-3xl font-bold leading-tight">₹50,000</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-slate-500 text-[16px]">trending_flat</span>
+<p class="text-slate-400 text-sm font-semibold leading-normal">0% <span class="text-slate-500 font-normal">vs last month</span></p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-content-dark border border-slate-800 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center justify-between mb-1">
+<p class="text-slate-400 text-sm font-medium leading-normal">Infra Cost</p>
+<span class="material-symbols-outlined text-slate-500 text-[18px]">dns</span>
+</div>
+<p class="text-slate-100 text-3xl font-bold leading-tight">₹18,500</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[#10b981] text-[16px]">trending_down</span>
+<p class="text-[#10b981] text-sm font-semibold leading-normal">-5% <span class="text-slate-500 font-normal">optimization</span></p>
+</div>
+</div>
+</div>
+<!-- Row 2: Charts -->
+<div class="flex flex-col lg:flex-row gap-6">
+<!-- Revenue Growth Line Chart -->
+<div class="flex flex-col gap-4 rounded-xl border border-slate-800 bg-content-dark p-6 lg:w-3/5 shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-slate-100 text-lg font-bold leading-normal">Monthly Revenue Growth</h3>
+<p class="text-slate-400 text-sm">Last 6 Months (Target: ₹2,000,000)</p>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-xs text-slate-400">Actual</span>
+</div>
+<div class="flex items-center gap-1">
+<div class="w-3 h-px border-t border-dashed border-slate-500"></div>
+<span class="text-xs text-slate-400">Target</span>
+</div>
+</div>
+</div>
+<div class="flex-1 min-h-[240px] relative w-full mt-4 flex flex-col justify-end">
+<!-- Y Axis Labels & Grid -->
+<div class="absolute inset-0 flex flex-col justify-between z-0 pb-8 pointer-events-none">
+<div class="flex items-center w-full border-b border-dashed border-slate-800/50 h-0"><span class="absolute -ml-10 text-xs text-slate-500 -mt-2">200k</span></div>
+<div class="flex items-center w-full border-b border-dashed border-slate-800 h-0"><span class="absolute -ml-10 text-xs text-slate-500 -mt-2">150k</span></div>
+<div class="flex items-center w-full border-b border-dashed border-slate-800 h-0"><span class="absolute -ml-10 text-xs text-slate-500 -mt-2">100k</span></div>
+<div class="flex items-center w-full border-b border-dashed border-slate-800 h-0"><span class="absolute -ml-10 text-xs text-slate-500 -mt-2">50k</span></div>
+<div class="flex items-center w-full border-b border-slate-700 h-0"><span class="absolute -ml-10 text-xs text-slate-500 -mt-2">0</span></div>
+</div>
+<!-- Chart Area -->
+<div class="relative w-full h-full z-10 pb-8 ml-2">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Target Line -->
+<line stroke="#64748b" stroke-dasharray="2,2" stroke-width="0.5" x1="0" x2="100" y1="20" y2="20"></line>
+<!-- Area Gradient -->
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#ec5b13" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#ec5b13" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Line Path -->
+<path d="M0,80 L20,70 L40,65 L60,50 L80,40 L100,25" fill="none" stroke="#ec5b13" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Area Path -->
+<path d="M0,80 L20,70 L40,65 L60,50 L80,40 L100,25 L100,100 L0,100 Z" fill="url(#chartGradient)"></path>
+<!-- Data Points -->
+<circle cx="0" cy="80" fill="#1A1F2E" r="1.5" stroke="#ec5b13" stroke-width="1"></circle>
+<circle cx="20" cy="70" fill="#1A1F2E" r="1.5" stroke="#ec5b13" stroke-width="1"></circle>
+<circle cx="40" cy="65" fill="#1A1F2E" r="1.5" stroke="#ec5b13" stroke-width="1"></circle>
+<circle cx="60" cy="50" fill="#1A1F2E" r="1.5" stroke="#ec5b13" stroke-width="1"></circle>
+<circle cx="80" cy="40" fill="#1A1F2E" r="1.5" stroke="#ec5b13" stroke-width="1"></circle>
+<circle cx="100" cy="25" fill="#ec5b13" r="1.5" stroke="#fff" stroke-width="0.5"></circle>
+</svg>
+</div>
+<!-- X Axis Labels -->
+<div class="absolute bottom-0 w-full flex justify-between text-xs text-slate-500 font-medium px-2">
+<span>Jan</span>
+<span>Feb</span>
+<span>Mar</span>
+<span>Apr</span>
+<span>May</span>
+<span>Jun</span>
+</div>
+</div>
+</div>
+<!-- Revenue by Client Donut Chart -->
+<div class="flex flex-col gap-4 rounded-xl border border-slate-800 bg-content-dark p-6 lg:w-2/5 shadow-sm">
+<h3 class="text-slate-100 text-lg font-bold leading-normal">Revenue by Client</h3>
+<div class="flex-1 flex items-center justify-center relative py-4">
+<div class="relative size-48">
+<!-- Simple SVG Donut -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#1e293b" stroke-width="20"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#ec5b13" stroke-dasharray="251.2" stroke-dashoffset="100.48" stroke-width="20"></circle> <!-- ~60% -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#f97316" stroke-dasharray="251.2" stroke-dashoffset="175.84" stroke-dashoffset-base="100.48" stroke-width="20" style="transform-origin: 50% 50%; transform: rotate(216deg);"></circle> <!-- ~30% -->
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="text-2xl font-bold text-slate-100">1.5L</span>
+<span class="text-xs text-slate-400">Total MRR</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-2">
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-primary"></div>
+<span class="text-slate-300">TechCorp Inc.</span>
+</div>
+<span class="font-medium text-slate-100">₹90,000</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-orange-500"></div>
+<span class="text-slate-300">GlobalRetail</span>
+</div>
+<span class="font-medium text-slate-100">₹45,000</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-slate-800"></div>
+<span class="text-slate-300">StartupHub</span>
+</div>
+<span class="font-medium text-slate-100">₹15,000</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Row 3: Client Health Table -->
+<div class="flex flex-col gap-4 rounded-xl border border-slate-800 bg-content-dark p-6 shadow-sm overflow-hidden">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-slate-100 text-lg font-bold leading-normal">Client Health Monitor</h3>
+<button class="text-primary text-sm font-medium hover:underline flex items-center gap-1">
+                                View All <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm whitespace-nowrap">
+<thead>
+<tr class="border-b border-slate-800 text-slate-400 font-medium">
+<th class="pb-3 px-4 font-medium">Client</th>
+<th class="pb-3 px-4 font-medium">Health Score</th>
+<th class="pb-3 px-4 font-medium">Revenue Trend</th>
+<th class="pb-3 px-4 font-medium">Error Rate</th>
+<th class="pb-3 px-4 font-medium">Status</th>
+<th class="pb-3 px-4 font-medium">Risk Level</th>
+<th class="pb-3 px-4 font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-slate-800/50 hover:bg-slate-800/20 transition-colors group">
+<td class="py-4 px-4 font-medium text-slate-100">TechCorp Inc.</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-[#10b981]"></div>
+<span class="font-bold text-[#10b981]">94</span>
+</div>
+</td>
+<td class="py-4 px-4"><span class="text-[#10b981] flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> Stable</span></td>
+<td class="py-4 px-4 text-slate-300">0.02%</td>
+<td class="py-4 px-4"><span class="inline-flex items-center rounded-md bg-slate-800 px-2 py-1 text-xs font-medium text-slate-300 ring-1 ring-inset ring-slate-700">Auto</span></td>
+<td class="py-4 px-4"><span class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">Low</span></td>
+<td class="py-4 px-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="border-b border-slate-800/50 hover:bg-slate-800/20 transition-colors group">
+<td class="py-4 px-4 font-medium text-slate-100">GlobalRetail</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-yellow-500"></div>
+<span class="font-bold text-yellow-500">72</span>
+</div>
+</td>
+<td class="py-4 px-4"><span class="text-slate-400 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">horizontal_rule</span> Flat</span></td>
+<td class="py-4 px-4 text-slate-300">1.5%</td>
+<td class="py-4 px-4"><span class="inline-flex items-center rounded-md bg-slate-800 px-2 py-1 text-xs font-medium text-slate-300 ring-1 ring-inset ring-slate-700">Auto</span></td>
+<td class="py-4 px-4"><span class="inline-flex items-center rounded-md bg-yellow-500/10 px-2 py-1 text-xs font-medium text-yellow-500 ring-1 ring-inset ring-yellow-500/20">Medium</span></td>
+<td class="py-4 px-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-800/20 transition-colors group">
+<td class="py-4 px-4 font-medium text-slate-100">StartupHub</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-red-500"></div>
+<span class="font-bold text-red-500">41</span>
+</div>
+</td>
+<td class="py-4 px-4"><span class="text-red-400 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_downward</span> Declining</span></td>
+<td class="py-4 px-4 text-slate-300">5.2%</td>
+<td class="py-4 px-4"><span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary ring-1 ring-inset ring-primary/30">Override</span></td>
+<td class="py-4 px-4"><span class="inline-flex items-center rounded-md bg-red-500/10 px-2 py-1 text-xs font-medium text-red-400 ring-1 ring-inset ring-red-500/20">High Risk</span></td>
+<td class="py-4 px-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Row 4: Capacity & Pipeline -->
+<div class="flex flex-col lg:flex-row gap-6 mb-8">
+<!-- Capacity Gauge -->
+<div class="flex flex-col gap-4 rounded-xl border border-slate-800 bg-content-dark p-6 lg:w-1/2 shadow-sm">
+<div class="flex justify-between items-center">
+<h3 class="text-slate-100 text-lg font-bold leading-normal">System Capacity</h3>
+<span class="material-symbols-outlined text-slate-500">memory</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center py-6">
+<div class="relative w-48 h-24 overflow-hidden mb-2">
+<div class="absolute w-48 h-48 border-[24px] border-slate-800 rounded-full border-b-transparent border-l-transparent transform rotate-45"></div>
+<div class="absolute w-48 h-48 border-[24px] border-[#10b981] rounded-full border-b-transparent border-l-transparent transform rotate-45" style="clip-path: polygon(0 0, 34% 0, 34% 50%, 0 50%);"></div>
+<div class="absolute bottom-0 left-0 w-full text-center">
+<span class="text-3xl font-bold text-slate-100">34%</span>
+</div>
+</div>
+<p class="text-slate-400 text-sm font-medium">Current Load (Healthy)</p>
+</div>
+<div class="flex justify-between text-xs text-slate-500 border-t border-slate-800 pt-3">
+<span>Max capacity: 10,000 tasks/hr</span>
+<span>Current: 3,400 tasks/hr</span>
+</div>
+</div>
+<!-- Next Follow-ups Pipeline -->
+<div class="flex flex-col gap-4 rounded-xl border border-slate-800 bg-content-dark p-6 lg:w-1/2 shadow-sm">
+<div class="flex justify-between items-center">
+<h3 class="text-slate-100 text-lg font-bold leading-normal">Sales Pipeline</h3>
+<span class="inline-flex items-center rounded-md bg-slate-800 px-2 py-1 text-xs font-medium text-slate-300">Next 7 Days</span>
+</div>
+<div class="flex flex-col gap-3 mt-2">
+<div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/50 border border-slate-800 hover:border-slate-700 transition-colors">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/20 text-primary flex items-center justify-center font-bold text-sm">F</div>
+<div>
+<p class="text-sm font-medium text-slate-100">FinTech Solutions Demo</p>
+<p class="text-xs text-slate-400">Tomorrow, 10:00 AM</p>
+</div>
+</div>
+<span class="text-sm font-semibold text-slate-300">Est. ₹1.2L</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/50 border border-slate-800 hover:border-slate-700 transition-colors">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-sm">L</div>
+<div>
+<p class="text-sm font-medium text-slate-100">LogisticsPro Contract Sent</p>
+<p class="text-xs text-slate-400">In 3 Days</p>
+</div>
+</div>
+<span class="text-sm font-semibold text-slate-300">Est. ₹80k</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/50 border border-slate-800 hover:border-slate-700 transition-colors">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-sm">H</div>
+<div>
+<p class="text-sm font-medium text-slate-100">HealthCare Sync Follow-up</p>
+<p class="text-xs text-slate-400">Next Week</p>
+</div>
+</div>
+<span class="text-sm font-semibold text-slate-300">Est. ₹2L+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

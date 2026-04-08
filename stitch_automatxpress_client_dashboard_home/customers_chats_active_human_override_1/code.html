@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Customers &amp; Chats - Active Human Override</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2e82c2",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#131a1f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col">
+<div class="relative flex h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-hidden">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 shrink-0 shadow-sm z-10">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3 text-slate-900 dark:text-white">
+<div class="size-6 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 28px;">support_agent</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight" style="">AutomatXpress</h2>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<div class="flex items-center gap-6">
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#" style="">Dashboard</a>
+<a class="text-sm font-bold leading-normal text-primary" href="#" style="">Customers &amp; Chats</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#" style="">Settings</a>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border border-slate-200 dark:border-slate-700" data-alt="Admin profile picture" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDcdINnjjSRKDhjcoxDrD-V5s3XqkCtwWvQd9JxuJOJXpvzyUo7q_T9zSrYUy-bmojZDuYRcxGJqUMCrnmoILtWSMbCJJcGLBabnNL5fnwc08_EVZKQzlaLrnrIyW1xAxWbJ_NHHZDmwUWInvBs_ZA5nYQhrv09GPPweZYb_Is3toX4NZgDTKJo-i-E36EpNHutfA9uNeW6QsO4CycZHOjmQlNsevBSOY0l7_vQolPj6KwHsRj3JvVXwo2zm2bdJEqfUmMNAtQ1FAM&quot;);"></div>
+</div>
+</header>
+<!-- Main Content (Split Pane) -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Left Pane: Customer List -->
+<div class="w-[320px] flex flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shrink-0">
+<!-- Search -->
+<div class="p-4 border-b border-slate-200 dark:border-slate-800">
+<label class="flex flex-col w-full h-10" style="">
+<div class="flex w-full flex-1 items-stretch rounded-full h-full bg-slate-100 dark:bg-slate-800 border border-transparent focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<div class="text-slate-500 flex items-center justify-center pl-4 rounded-l-full">
+<span class="material-symbols-outlined text-[20px]" style="">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-slate-900 dark:text-slate-100 bg-transparent border-none focus:ring-0 placeholder:text-slate-400 dark:placeholder:text-slate-500 px-3 text-sm font-normal" placeholder="Search customers..." value="">
+</div>
+</label>
+</div>
+<!-- Tabs -->
+<div class="flex px-2 border-b border-slate-200 dark:border-slate-800 overflow-x-auto hide-scrollbar">
+<a class="flex items-center justify-center border-b-2 border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 px-4 py-3 whitespace-nowrap" href="#" style="">
+<span class="text-sm font-semibold" style="">All</span>
+</a>
+<a class="flex items-center justify-center border-b-2 border-orange-500 text-orange-600 dark:text-orange-400 px-4 py-3 whitespace-nowrap" href="#" style="">
+<span class="text-sm font-semibold" style="">Human Override</span>
+<span class="ml-2 bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 py-0.5 px-2 rounded-full text-[10px] font-bold" style="">1</span>
+</a>
+<a class="flex items-center justify-center border-b-2 border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 px-4 py-3 whitespace-nowrap" href="#" style="">
+<span class="text-sm font-semibold" style="">Active Order</span>
+</a>
+</div>
+<!-- Chat List -->
+<div class="flex-1 overflow-y-auto">
+<!-- Active Human Override (Rahul Mehta) -->
+<div class="flex flex-col gap-1 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/10 px-4 py-3 cursor-pointer hover:bg-orange-100/50 dark:hover:bg-orange-900/20 transition-colors">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Rahul Mehta profile picture" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDLCCcklxCImZL_FnWmWMC1DJVfZfQT7KJRfKWXX8_br96VvfDsR-VGFsU7JiSNZJkuC5Gvy_3kaAt5X230T8_Q7p7aSV3v2b_qWB2bR6pw850Ki_GQd81C63VuqxUMLjMz0l6uiqFL7qKPKhIMTJVnck0jA8LCvkpdAOZLE5iSuVRhftbOJ4FIYSEEer_g5VAdfgpF6czQNgP3zmSAuAwoqtSIL25EwvFZQzNNyHbCp5YMHf7Rl7-O5xscvulrygiDenmw3aOnLWA&quot;);"></div>
+<div>
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold" style="">Rahul Mehta</p>
+<span class="inline-block mt-0.5 bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-sm tracking-wider uppercase" style="">You Have Control</span>
+</div>
+</div>
+<span class="text-xs text-slate-500 font-medium" style="">Just now</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm truncate mt-1 pl-[52px]" style="">I need help changing my delivery address.</p>
+</div>
+<!-- Regular Chat (Priya Singh) -->
+<div class="flex flex-col gap-1 border-b border-slate-100 dark:border-slate-800/50 px-4 py-3 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Priya Singh profile picture" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCltb4KqWlMPjB3HQFA9i1YwuUv2ACYtNDMSkwHcPjnJYgFAa2C87rY6AsEl-1bMHTPCskAmr0aRrCOL4E_xMjEKz9BbH6gLT-HqdTN4HHTwF9RftcwXtp96A2OkB6adPFT0XVrBQAJNbL68IfvLeKMGAFYCKHtM2da-qE4axQwJ9clRSa19u4G7F7Y-aJxqMv3y1jq-owr9Dcko12cE8w8DmnK5LGMD-hmGzijgVRFrU8avNytJC__2T7o7FqgSg-jKy8ahbyS2lw&quot;);"></div>
+<div class="absolute bottom-0 right-0 size-2.5 rounded-full bg-green-500 border border-white dark:border-slate-900"></div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold" style="">Priya Singh</p>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[12px] text-green-500" style="">smart_toy</span>
+<span class="text-slate-500 text-xs font-medium" style="">AI Active</span>
+</div>
+</div>
+</div>
+<span class="text-xs text-slate-400" style="">10:42 AM</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm truncate mt-1 pl-[52px]" style="">Is this product in stock?</p>
+</div>
+<!-- Reserved Chat (Amit Kumar) -->
+<div class="flex flex-col gap-1 border-b border-slate-100 dark:border-slate-800/50 px-4 py-3 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Amit Kumar profile picture" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuA2ULXatgS41wc0b2aVD5R29eDwima9wc7zfhfLZb3V3uVxoQt2X2Cg5zD23mkZcEHdN_HuxQuy6UlFOtBnKWTLV_jFB7UmvAgOyA_sGWKoNLKUUHHl0HpGz3ile-ZxFCu3ypgHQGkTXsX4949vXdD2o0hwlFUF259Kj9utErVeqoPD-CY8P9fVlLytwMVGGeDuRoyiCnqWfBa5M0nTZbuhVHIMIsCU4qjHMAoqG1vtzDIBXUsDtoTXsKocmL1oRL8uDp9D9tNevMg&quot;);"></div>
+<div>
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold" style="">Amit Kumar</p>
+<span class="inline-block mt-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-800 text-[10px] font-bold px-2 py-0.5 rounded-sm tracking-wider uppercase" style="">Reserved</span>
+</div>
+</div>
+<span class="text-xs text-slate-400" style="">Yesterday</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm truncate mt-1 pl-[52px]" style="">Thank you for the update.</p>
+</div>
+</div>
+</div>
+<!-- Right Pane: Chat Interface -->
+<div class="flex-1 flex flex-col bg-slate-50 dark:bg-slate-900/50 relative">
+<!-- Chat Header -->
+<div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm z-10">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 shadow-sm" data-alt="Rahul Mehta header profile" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuA9A2J2nCanQ5yleLUQkcmmdaEGAuBHUrD3Yk_ltK-p1nOEcw0hr9cNVhOaHcfc675Xee50FrJbgYR0znTKQSrwEwVdZyGof0zCgyx99gSE0kBW-k68OOA6nlwkunIhf1R7S-N6TIR8rgbtXeKsxHtNnfYfZA54blyeCl7Sjdd0b_Gs06VUAJKNCVEyu6j3Ou3uLgYC0rzVQDLgQIwApM9LCS9wehUkoaHuLdcmLmqktHuDjfr_o3XRzrhqeX5fMr-C8YwtICG3BmQ&quot;);"></div>
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white" style="">Rahul Mehta</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="flex size-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-sm text-slate-500" style="">Online</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border border-orange-200 dark:border-orange-800 px-3 py-1.5 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" style="">engineering</span>
+<span class="text-sm font-bold" style="">You are in control</span>
+</div>
+<button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm transition-colors flex items-center gap-2" style="">
+<span class="material-symbols-outlined text-[18px]" style="">smart_toy</span>
+                            Hand back to AI
+                        </button>
+</div>
+</div>
+<!-- Chat Messages Area -->
+<div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
+<!-- AI Message -->
+<div class="flex items-start gap-3">
+<div class="size-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" style="">smart_toy</span>
+</div>
+<div class="flex flex-col gap-1 max-w-[70%]">
+<span class="text-xs text-slate-500 ml-1" style="">AutomatXpress AI • 10:30 AM</span>
+<div class="bg-white dark:bg-slate-800 p-3 rounded-2xl rounded-tl-sm shadow-sm border border-slate-100 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm" style="">
+                                Hello Rahul! I see your order #AX-8923 is scheduled for delivery tomorrow. How can I help you today?
+                            </div>
+</div>
+</div>
+<!-- Customer Message -->
+<div class="flex items-start gap-3 flex-row-reverse">
+<div class="size-8 rounded-full bg-center bg-no-repeat bg-cover shrink-0 shadow-sm" data-alt="Rahul Mehta message profile" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDy73uKDWnCvq4cO5JhA3BRk3q8hDLYtYdyBZyXQiLqh4GAw0Eh-KmXjqAfpYcfcLlxHbxsRcS4xRYxsU7S8uMvzTuBAD9_UQ6IZZu--d7yHTqRkRGDEgpN82R93YKPcjx5IGitGGwzo48gt4AxCXC1QU0ulHAtAwUiwtmYZph32L-zSkgz4asbLkCETKfqvrs55oc7PW8UddTDfis4d4kA9KUaTT8yqQBT_hamtYPZjEMmzyCqVCLyazKk8-pzvaeXMEKnKfOXAMY&quot;);"></div>
+<div class="flex flex-col gap-1 items-end max-w-[70%]">
+<span class="text-xs text-slate-500 mr-1" style="">10:32 AM</span>
+<div class="bg-primary p-3 rounded-2xl rounded-tr-sm shadow-sm text-white text-sm" style="">
+                                I need help changing my delivery address. I entered the wrong zip code.
+                            </div>
+</div>
+</div>
+<!-- AI Attempt (Failed/Confused) -->
+<div class="flex items-start gap-3">
+<div class="size-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" style="">smart_toy</span>
+</div>
+<div class="flex flex-col gap-1 max-w-[70%]">
+<span class="text-xs text-slate-500 ml-1" style="">AutomatXpress AI • 10:32 AM</span>
+<div class="bg-white dark:bg-slate-800 p-3 rounded-2xl rounded-tl-sm shadow-sm border border-slate-100 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm" style="">
+                                I can help you track your order. Would you like me to send you the tracking link for the current address?
+                            </div>
+</div>
+</div>
+<!-- Customer Message (Frustrated) -->
+<div class="flex items-start gap-3 flex-row-reverse">
+<div class="size-8 rounded-full bg-center bg-no-repeat bg-cover shrink-0 shadow-sm" data-alt="Rahul Mehta message profile" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDmjLvBXGTu0mQy3K5uhhbW5h1XPjxXaxqXGZ1k55bZM8xg1PLSh7d3jnp-jNgNJasMVk0Y9A-c9b9QYA97MH0xouZdsxzmyY4HRbYk17ybsMYxBZ6AJejgsWfkdLugSeihIHehQlAQsluY8kDutbwQt73aBAd_7eny-CFM7ToWkyY_kjlb20MA976MXliaNqXwlalFEIod7E3sarhMmZ2TdT5aObYRYTffvsO6K8-K-78e1xRlnySSjVx_h8FC6bh_wSJR7ETByE8&quot;);"></div>
+<div class="flex flex-col gap-1 items-end max-w-[70%]">
+<span class="text-xs text-slate-500 mr-1" style="">10:33 AM</span>
+<div class="bg-primary p-3 rounded-2xl rounded-tr-sm shadow-sm text-white text-sm" style="">
+                                No, I need to CHANGE the address. Can I speak to a human?
+                            </div>
+</div>
+</div>
+<!-- System Notice (Handover) -->
+<div class="flex justify-center my-4">
+<div class="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-xs font-bold px-4 py-1.5 rounded-full flex items-center gap-2 border border-orange-200 dark:border-orange-800/50" style="">
+<span class="material-symbols-outlined text-[14px]" style="">person</span>
+                            Human Intervention Requested - You took control
+                        </div>
+</div>
+<!-- Staff Message (You) -->
+<div class="flex items-start gap-3 flex-row-reverse">
+<div class="size-8 rounded-full bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" style="">support_agent</span>
+</div>
+<div class="flex flex-col gap-1 items-end max-w-[70%]">
+<span class="text-xs text-slate-500 mr-1" style=""><br></span>
+<div class="bg-emerald-100 dark:bg-emerald-900/40 p-3 rounded-2xl rounded-tr-sm shadow-sm text-emerald-900 dark:text-emerald-100 border border-emerald-200 dark:border-emerald-800 text-sm" style=""><br></div>
+</div>
+</div>
+</div>
+<!-- Chat Input Area -->
+<div class="p-4 bg-white dark:bg-slate-900 border-t border-orange-200 dark:border-orange-900/50 relative shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<!-- Indicator that staff is typing/in control -->
+<div class="absolute -top-3 left-6 bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-sm tracking-wide shadow-sm" style="">
+                        STAFF MODE ACTIVE
+                    </div>
+<div class="flex items-end gap-3 bg-slate-50 dark:bg-slate-800 border-2 border-orange-400/50 dark:border-orange-500/50 rounded-xl p-2 focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-500/20 transition-all">
+<button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shrink-0" style="">
+<span class="material-symbols-outlined" style="">attach_file</span>
+</button>
+<textarea class="flex-1 max-h-32 min-h-[44px] bg-transparent border-none focus:ring-0 resize-none text-slate-900 dark:text-slate-100 text-sm py-3 px-2 placeholder:text-slate-400" placeholder="Reply as staff member..." rows="1"></textarea>
+<div class="flex gap-2 shrink-0 pb-1 pr-1">
+<button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors hidden sm:block" style="">
+<span class="material-symbols-outlined" style="">sentiment_satisfied</span>
+</button>
+<button class="bg-orange-500 hover:bg-orange-600 text-white p-2.5 rounded-lg shadow-sm transition-colors flex items-center justify-center" style="">
+<span class="material-symbols-outlined text-[20px]" style="">send</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between items-center mt-2 px-1">
+<span class="text-xs text-slate-400 flex items-center gap-1" style="">
+<span class="material-symbols-outlined text-[14px]" style="">info</span>
+                            Customer will see this message as coming from support staff.
+                        </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

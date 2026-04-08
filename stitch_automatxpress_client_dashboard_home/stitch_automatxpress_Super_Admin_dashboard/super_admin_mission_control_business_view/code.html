@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutomatXpress Mission Control - Business Mode</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#57a5ff",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1823",
+                        "surface-dark": "#162230",
+                        "border-dark": "#2e4a6b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between border-b border-border-dark bg-background-dark/50 backdrop-blur-md px-6 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">rocket_launch</span>
+</div>
+<h2 class="text-slate-100 text-lg font-bold leading-tight tracking-tight">AutomatXpress <span class="text-slate-500 font-medium">Mission Control</span></h2>
+</div>
+<div class="hidden md:flex flex-col min-w-64">
+<div class="flex w-full items-stretch rounded-lg h-9 bg-surface-dark border border-border-dark focus-within:border-primary/50 transition-colors">
+<div class="text-slate-400 flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-sm">search</span>
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm text-slate-200 placeholder:text-slate-500 px-3" placeholder="Search accounts, ROI data, or metrics..." value=""/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-primary text-sm font-semibold border-b-2 border-primary pb-1" href="#">Intelligence</a>
+<a class="text-slate-400 hover:text-slate-100 text-sm font-medium transition-colors" href="#">Portfolio</a>
+<a class="text-slate-400 hover:text-slate-100 text-sm font-medium transition-colors" href="#">Growth</a>
+<a class="text-slate-400 hover:text-slate-100 text-sm font-medium transition-colors" href="#">Pipeline</a>
+</nav>
+<div class="flex items-center gap-3 border-l border-border-dark pl-6">
+<button class="relative flex items-center justify-center rounded-lg h-9 w-9 bg-surface-dark text-slate-300 hover:text-white border border-border-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 size-2 bg-primary rounded-full border-2 border-background-dark"></span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-9 w-9 bg-surface-dark text-slate-300 hover:text-white border border-border-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+<div class="bg-primary/20 border border-primary/30 rounded-full size-9 overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Corporate professional avatar for executive dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmupT6d1iPxbJc_d5gmRScJsULEsW2XN-m3zCGK38m2xYEjXojxlLmu0bevBarOV5_DBTeZuxZjJOP6m404YteJawOvmxm_lgu2FAKXtY14lSr3C-I7cUFCDdihhgYz2PX514srTm5z6E3Eybwb8Ohci8PmG5n3kpdX_YikzSOr4aozXWFIXXHNuFsO16RlGJjfrHmNX-TO17u2o3Mdq0ERoLlv2qumi1pOIhXZxWM93EKgBObnbejY_r6K0reAZ0rACurN5hwdxY"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 hidden md:flex flex-col border-r border-border-dark bg-background-dark/30 p-4 shrink-0">
+<div class="flex flex-col h-full justify-between">
+<div class="space-y-6">
+<div>
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-3 mb-3">Core Monitoring</p>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:bg-surface-dark hover:text-slate-100 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Global Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-[20px] filled-icon">analytics</span>
+<span class="text-sm font-semibold">Business BI</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:bg-surface-dark hover:text-slate-100 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+<span class="text-sm font-medium">High Value Clients</span>
+</a>
+</nav>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-3 mb-3">Revenue &amp; Sales</p>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:bg-surface-dark hover:text-slate-100 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span class="text-sm font-medium">Billing Cycles</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:bg-surface-dark hover:text-slate-100 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">query_stats</span>
+<span class="text-sm font-medium">Sales Pipeline</span>
+</a>
+</nav>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Mode Toggle -->
+<div class="bg-surface-dark border border-border-dark p-1 rounded-xl flex items-center">
+<button class="flex-1 py-2 px-1 text-[11px] font-bold rounded-lg text-slate-500 hover:text-slate-300 transition-colors">DEVELOPER</button>
+<button class="flex-1 py-2 px-1 text-[11px] font-bold rounded-lg bg-primary text-slate-900 shadow-lg shadow-primary/20">BUSINESS</button>
+</div>
+<div class="px-3 py-4 rounded-xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20">
+<p class="text-xs font-bold text-primary mb-1">Upgrade Insight</p>
+<p class="text-[11px] text-slate-400 leading-relaxed mb-3">3 enterprise clients are ready for an automation tier upgrade based on ROI.</p>
+<button class="w-full py-2 bg-primary/20 hover:bg-primary/30 text-primary text-[11px] font-bold rounded-lg border border-primary/30 transition-colors uppercase tracking-wider">Review ROI</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto bg-background-dark/20 p-6">
+<div class="max-w-7xl mx-auto space-y-8">
+<!-- Dashboard Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="space-y-1">
+<h1 class="text-3xl font-black text-slate-100 tracking-tight">Business Intelligence</h1>
+<p class="text-slate-400 text-sm">Real-time performance metrics for all managed instances across the global network.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-dark border border-border-dark rounded-lg">
+<span class="size-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-xs font-semibold text-slate-300">Live Data</span>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-slate-900 font-bold rounded-lg hover:bg-primary/90 transition-colors text-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Export Report
+                        </button>
+</div>
+</div>
+<!-- Global Stats Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-surface-dark border border-border-dark p-5 rounded-xl space-y-3 hover:border-primary/40 transition-colors group">
+<div class="flex justify-between items-start">
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider">Total MRR</p>
+<span class="text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded text-[10px] font-bold">+12.4%</span>
+</div>
+<div class="flex items-baseline gap-2">
+<p class="text-3xl font-black text-slate-100">$428.5k</p>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-3/4 rounded-full"></div>
+</div>
+</div>
+<div class="bg-surface-dark border border-border-dark p-5 rounded-xl space-y-3 hover:border-primary/40 transition-colors group">
+<div class="flex justify-between items-start">
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider">Avg. Client ROI</p>
+<span class="text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded text-[10px] font-bold">+52%</span>
+</div>
+<div class="flex items-baseline gap-2">
+<p class="text-3xl font-black text-slate-100">340%</p>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full w-[85%] rounded-full"></div>
+</div>
+</div>
+<div class="bg-surface-dark border border-border-dark p-5 rounded-xl space-y-3 hover:border-primary/40 transition-colors group">
+<div class="flex justify-between items-start">
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider">Global Pipeline</p>
+<span class="text-primary bg-primary/10 px-1.5 py-0.5 rounded text-[10px] font-bold">In Progress</span>
+</div>
+<div class="flex items-baseline gap-2">
+<p class="text-3xl font-black text-slate-100">1.2M</p>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary/60 h-full w-[60%] rounded-full"></div>
+</div>
+</div>
+<div class="bg-surface-dark border border-border-dark p-5 rounded-xl space-y-3 hover:border-primary/40 transition-colors group">
+<div class="flex justify-between items-start">
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider">Churn Risk</p>
+<span class="text-slate-500 bg-slate-500/10 px-1.5 py-0.5 rounded text-[10px] font-bold">Stable</span>
+</div>
+<div class="flex items-baseline gap-2">
+<p class="text-3xl font-black text-slate-100">1.2%</p>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-slate-700 h-full w-[12%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- High Value Client Cards -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-lg font-bold text-slate-100">Performance Focus: Top Tier Clients</h3>
+<button class="text-primary text-xs font-bold hover:underline">View All Clients</button>
+</div>
+<!-- Card 1 -->
+<div class="bg-surface-dark border border-border-dark rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all">
+<div class="p-6 flex flex-col md:flex-row gap-6">
+<div class="flex-1 space-y-4">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-xl bg-slate-800 flex items-center justify-center border border-border-dark">
+<img alt="Logo" class="size-8" data-alt="Corporate logo for high-tier tech client" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFW5t41mLbypt1hXD1isjq6nvOkUYmEfQMFz90YU1NlMcLreUGciLPQ_jmL4_vPobaS6aZWDwSNBYXqd7nq62pkrDo6xBLiXmcWsDuQQC9i2C_jMHu8FraMj8FNLY-t3PXRhvEy_yLEwpQBXBpzfUxBDYepnfWqaRosH0-d2Y_AmTtMDVa2QssJ-yvLxVVVde8_yjdNeDp97WDriSjhLZ35NTV4_E-EmRXoxmLrsE6IX7XzDDHDJbQMZck0TZls5ByUWKch0HLDp8"/>
+</div>
+<div>
+<h4 class="text-slate-100 font-bold text-lg">Nexus Logistics Int.</h4>
+<p class="text-slate-500 text-xs">Contract: Enterprise Elite • Renewing in 42 days</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 border-t border-border-dark pt-4">
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Current ROI</p>
+<p class="text-xl font-black text-emerald-400">412%</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Monthly MRR</p>
+<p class="text-xl font-black text-slate-100">$24,500</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Savings Est.</p>
+<p class="text-xl font-black text-primary">$182k</p>
+</div>
+</div>
+</div>
+<div class="w-full md:w-48 bg-background-dark/50 rounded-lg p-3 border border-border-dark flex flex-col justify-between">
+<p class="text-[10px] text-slate-400 font-bold mb-2">30-Day Trend</p>
+<div class="h-16 w-full flex items-end gap-1">
+<div class="bg-primary/20 hover:bg-primary w-full h-[40%] rounded-sm transition-all"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-[55%] rounded-sm transition-all"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-[50%] rounded-sm transition-all"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-[70%] rounded-sm transition-all"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-[85%] rounded-sm transition-all"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-[80%] rounded-sm transition-all"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-[95%] rounded-sm transition-all"></div>
+</div>
+<div class="mt-2 flex justify-between text-[9px] text-slate-500 font-bold">
+<span>WEEK 1</span>
+<span class="text-emerald-400">+18% GROWTH</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-dark border border-border-dark rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all">
+<div class="p-6 flex flex-col md:flex-row gap-6">
+<div class="flex-1 space-y-4">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-xl bg-slate-800 flex items-center justify-center border border-border-dark">
+<img alt="Logo" class="size-8" data-alt="Corporate logo for financial services client" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFW87Xknx1rdY8nN2A6J-znVos_sCzMpAvoRViwjv5DMJqfR2BOX7YiiHUefMy4pDBq3ZjyMcK6UevEDcmaO3VQ_FS7wcv-3L3wl6l2gdsbQQi_Z7HF5Pu4My5vzLMRwmLWRMkvl6RR_0Tu6SYzs1koXqhVrsMYG8FhKw_fo1x0t3VfEmcaiR9jAaVNgGAQRF_nS0EeFnT3f5H-pgdlwdz1kS9IHZXqKHW40QS0BfdwlH-AV-4ZqbMd0ue24sszwrCuBgMT79wWf0"/>
+</div>
+<div>
+<h4 class="text-slate-100 font-bold text-lg">Stellar FinTech Corp.</h4>
+<p class="text-slate-500 text-xs">Contract: Global Scaler • Renewing in 184 days</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 border-t border-border-dark pt-4">
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Current ROI</p>
+<p class="text-xl font-black text-emerald-400">284%</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Monthly MRR</p>
+<p class="text-xl font-black text-slate-100">$18,200</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Savings Est.</p>
+<p class="text-xl font-black text-primary">$94k</p>
+</div>
+</div>
+</div>
+<div class="w-full md:w-48 bg-background-dark/50 rounded-lg p-3 border border-border-dark flex flex-col justify-between">
+<p class="text-[10px] text-slate-400 font-bold mb-2">30-Day Trend</p>
+<div class="h-16 w-full flex items-end gap-1">
+<div class="bg-primary/20 hover:bg-primary w-full h-[60%] rounded-sm transition-all"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-[65%] rounded-sm transition-all"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-[62%] rounded-sm transition-all"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-[68%] rounded-sm transition-all"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-[72%] rounded-sm transition-all"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-[70%] rounded-sm transition-all"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-[75%] rounded-sm transition-all"></div>
+</div>
+<div class="mt-2 flex justify-between text-[9px] text-slate-500 font-bold">
+<span>WEEK 1</span>
+<span class="text-primary">+4% STABLE</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel: Global Sales Pipeline -->
+<div class="space-y-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-lg font-bold text-slate-100">Pipeline Alerts</h3>
+<span class="material-symbols-outlined text-slate-500 text-[20px]">filter_list</span>
+</div>
+<div class="space-y-3">
+<!-- Alert 1 -->
+<div class="p-4 bg-surface-dark border-l-4 border-emerald-500 rounded-lg border-y border-r border-border-dark hover:bg-slate-800/50 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<p class="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Opportunity Won</p>
+<span class="text-[10px] text-slate-500">2h ago</span>
+</div>
+<p class="text-sm font-bold text-slate-200 mb-1">Horizon Media Group</p>
+<p class="text-xs text-slate-400 mb-3">Enterprise expansion closed. +$12,000 MRR addition to Q4 targets.</p>
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-slate-700">
+<img class="rounded-full" data-alt="Sales representative headshot thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPrFrJe5zsxPShbQOz73Q7eEDEDTPZgLLcIG17H92g8slDlpRrZB48TDeYEmB4JlmjklcPoSB54CSI-MoDQxrjOz23mSgdSDUpcIdsBJuWm90wLdsNZi46PIphVeC2uX2_Ng7zwwHMAAdqCBctt_GqqmXmZ74liiuYAbAQI0NMuzH3qxGxlGB9Fe0hyJLLpXIbIsk5Fi5RyVbIXnPjyjYc9Ojh5Oo1JXEvR4oDkzV9Z2BO84Lm4DuxmxSAoHmpbQLHKLWb98IGTd0"/>
+</div>
+<p class="text-[10px] text-slate-400 font-medium">Account Lead: Sarah Chen</p>
+</div>
+</div>
+<!-- Alert 2 -->
+<div class="p-4 bg-surface-dark border-l-4 border-primary rounded-lg border-y border-r border-border-dark hover:bg-slate-800/50 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<p class="text-[10px] font-black text-primary uppercase tracking-widest">Upgrade Pending</p>
+<span class="text-[10px] text-slate-500">5h ago</span>
+</div>
+<p class="text-sm font-bold text-slate-200 mb-1">Apex Health Systems</p>
+<p class="text-xs text-slate-400 mb-3">Hitting 95% of automation capacity. System recommends immediate Pro-Plus upgrade path.</p>
+<button class="px-3 py-1 bg-primary/10 border border-primary/30 text-primary text-[10px] font-bold rounded-md hover:bg-primary/20 transition-all">GENERATE PROPOSAL</button>
+</div>
+<!-- Alert 3 -->
+<div class="p-4 bg-surface-dark border-l-4 border-amber-500 rounded-lg border-y border-r border-border-dark hover:bg-slate-800/50 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<p class="text-[10px] font-black text-amber-500 uppercase tracking-widest">Renewal Risk</p>
+<span class="text-[10px] text-slate-500">1d ago</span>
+</div>
+<p class="text-sm font-bold text-slate-200 mb-1">CloudStream TV</p>
+<p class="text-xs text-slate-400 mb-1">Low ROI engagement detected in last 14 days. Retention outreach advised.</p>
+<div class="mt-3 flex gap-2">
+<span class="px-2 py-0.5 bg-amber-500/10 text-amber-500 text-[9px] font-bold rounded uppercase">High Priority</span>
+<span class="px-2 py-0.5 bg-slate-700/50 text-slate-400 text-[9px] font-bold rounded uppercase">Retention Team</span>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-br from-surface-dark to-background-dark p-6 rounded-xl border border-border-dark mt-6 text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-3">auto_graph</span>
+<h4 class="text-slate-100 font-bold text-sm mb-1">Predictive Growth</h4>
+<p class="text-slate-500 text-xs mb-4 leading-relaxed">AI projects +18% revenue growth for next quarter based on current client ROI trends.</p>
+<button class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-lg border border-border-dark transition-all">Detailed Projections</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

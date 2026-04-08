@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutomatXpress Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2E86C1",
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#111827",
+                        "sidebar-dark": "#1B2631",
+                        "sidebar-item": "#2C3E50",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#1F2937",
+                        "text-light": "#1F2937",
+                        "text-dark": "#F9FAFB",
+                        "muted-light": "#6B7280",
+                        "muted-dark": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                    boxShadow: {
+                        'kpi': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 1px 3px 0 rgba(0,0,0,0.1) inset',
+                        'kpi-dark': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(255,255,255,0.05) inset',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-display flex h-screen overflow-hidden antialiased">
+<aside class="w-20 lg:w-64 bg-sidebar-dark text-white flex flex-col transition-all duration-300 z-20 shrink-0 shadow-lg">
+<div class="h-16 flex items-center justify-center lg:justify-start lg:px-6 border-b border-gray-700">
+<span class="material-icons text-primary text-2xl lg:mr-2">smart_toy</span>
+<span class="font-bold text-lg tracking-wide hidden lg:block">AutomatXpress</span>
+</div>
+<nav class="flex-1 py-6 flex flex-col gap-2 px-3 overflow-y-auto">
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-icons text-[20px] lg:mr-3">dashboard</span>
+<span class="font-medium hidden lg:block">Dashboard</span>
+</a>
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-icons text-[20px] lg:mr-3">shopping_cart</span>
+<span class="font-medium hidden lg:block">Live Orders</span>
+<span class="ml-auto bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full hidden lg:block">3</span>
+</a>
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-icons text-[20px] lg:mr-3">inventory_2</span>
+<span class="font-medium hidden lg:block">Products</span>
+</a>
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-icons text-[20px] lg:mr-3">people</span>
+<span class="font-medium hidden lg:block">Customers</span>
+</a>
+<a class="flex items-center px-3 py-2.5 text-gray-400 hover:bg-sidebar-item hover:text-white rounded-lg transition-colors group" href="#">
+<span class="material-icons text-[20px] lg:mr-3">bar_chart</span>
+<span class="font-medium hidden lg:block">Analytics</span>
+</a>
+</nav>
+<div class="p-4 border-t border-gray-700">
+<a class="flex items-center px-3 py-2.5 bg-primary/20 text-primary rounded-lg transition-colors group" href="#">
+<span class="material-icons text-[20px] lg:mr-3">settings</span>
+<span class="font-medium hidden lg:block">Settings</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<header class="h-16 bg-card-light dark:bg-card-dark border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 shrink-0 z-10">
+<div class="flex items-center gap-4">
+<h1 class="text-lg font-semibold text-text-light dark:text-text-dark hidden sm:block">Settings</h1>
+<span class="text-muted-light dark:text-muted-dark hidden sm:block">/</span>
+<span class="text-sm font-medium text-muted-light dark:text-muted-dark bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700">Store Profile</span>
+</div>
+<div class="flex items-center gap-4 lg:gap-6">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-full border border-green-200 dark:border-green-800">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+</span>
+<span class="text-xs font-medium">Bot Active</span>
+</div>
+<button class="relative p-2 text-muted-light hover:text-primary dark:text-muted-dark dark:hover:text-primary transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+<span class="material-icons">notifications_none</span>
+<span class="absolute top-1.5 right-1.5 h-2 w-2 bg-red-500 rounded-full border-2 border-white dark:border-card-dark"></span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-gray-200 dark:border-gray-700">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-blue-400 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                        A
+                    </div>
+<div class="hidden md:block text-sm">
+<p class="font-medium text-text-light dark:text-text-dark leading-none mb-1">Admin User</p>
+<p class="text-xs text-muted-light dark:text-muted-dark leading-none">Manager</p>
+</div>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-4 lg:p-6 flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-64 shrink-0 space-y-1">
+<a class="flex items-center justify-between px-4 py-3 bg-white dark:bg-card-dark rounded-lg border-l-4 border-primary text-primary shadow-sm" href="#">
+<div class="flex items-center gap-3">
+<span class="material-icons text-xl">store</span>
+<span class="font-medium text-sm">Store Profile</span>
+</div>
+<span class="material-icons text-sm">chevron_right</span>
+</a>
+<a class="flex items-center justify-between px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-text-light dark:text-text-dark transition-colors" href="#">
+<div class="flex items-center gap-3 text-muted-light dark:text-muted-dark hover:text-text-light dark:hover:text-text-dark">
+<span class="material-icons text-xl">group</span>
+<span class="font-medium text-sm">Staff Members</span>
+</div>
+</a>
+<a class="flex items-center justify-between px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-text-light dark:text-text-dark transition-colors" href="#">
+<div class="flex items-center gap-3 text-muted-light dark:text-muted-dark hover:text-text-light dark:hover:text-text-dark">
+<span class="material-icons text-xl">tune</span>
+<span class="font-medium text-sm">Bot Configuration</span>
+</div>
+</a>
+<a class="flex items-center justify-between px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-text-light dark:text-text-dark transition-colors" href="#">
+<div class="flex items-center gap-3 text-muted-light dark:text-muted-dark hover:text-text-light dark:hover:text-text-dark">
+<span class="material-icons text-xl">credit_card</span>
+<span class="font-medium text-sm">Billing</span>
+</div>
+</a>
+<a class="flex items-center justify-between px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg text-text-light dark:text-text-dark transition-colors" href="#">
+<div class="flex items-center gap-3 text-muted-light dark:text-muted-dark hover:text-text-light dark:hover:text-text-dark">
+<span class="material-icons text-xl">security</span>
+<span class="font-medium text-sm">Security</span>
+</div>
+</a>
+</div>
+<div class="flex-1">
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden">
+<div class="p-6 border-b border-gray-200 dark:border-gray-800">
+<h2 class="text-xl font-semibold text-text-light dark:text-text-dark">Store Profile</h2>
+<p class="text-sm text-muted-light dark:text-muted-dark mt-1">Manage your business details and contact information.</p>
+</div>
+<div class="p-6 space-y-6">
+<div class="flex items-center gap-6 pb-6 border-b border-gray-200 dark:border-gray-800">
+<div class="w-20 h-20 rounded-full bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center overflow-hidden shrink-0">
+<span class="material-icons text-gray-400 text-3xl">add_a_photo</span>
+</div>
+<div>
+<button class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm mb-2">
+                                    Change Logo
+                                </button>
+<p class="text-xs text-muted-light dark:text-muted-dark">JPG, GIF or PNG. Max size of 800K</p>
+</div>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="business-name">Business Name</label>
+<input class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm dark:text-white" id="business-name" type="text" value="Karol Bagh Electronics"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="gst-number">GST Number</label>
+<input class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm dark:text-white" id="gst-number" type="text" value="07AABCB1234C1Z5"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="store-description">Store Description</label>
+<textarea class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm dark:text-white min-h-[80px]" id="store-description">We are a premier electronics retailer specializing in the latest gadgets, mobile phones, and accessories.</textarea>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="address">Store Address</label>
+<textarea class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm dark:text-white min-h-[80px]" id="address">14/2, Arya Samaj Road, Karol Bagh
+New Delhi, 110005</textarea>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="email">Contact Email</label>
+<input class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm dark:text-white" id="email" type="email" value="contact@karolbaghelec.com"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="store-timings">Store Timings</label>
+<input class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm dark:text-white" id="store-timings" type="text" value="10:00 AM - 09:00 PM"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="whatsapp-number">Primary WhatsApp Number</label>
+<div class="relative">
+<input class="w-full pl-3 pr-10 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm text-gray-500 dark:text-gray-400 cursor-not-allowed" id="whatsapp-number" readonly="" type="text" value="+91 98765 43210"/>
+<span class="material-icons absolute right-3 top-2 text-gray-400 text-[20px]">lock</span>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="phone">Support Phone</label>
+<input class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm dark:text-white" id="phone" type="tel" value="+91 98765 43210"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="instagram-handle">Instagram Handle</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="text-gray-500 sm:text-sm">@</span>
+</div>
+<input class="w-full pl-8 pr-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm dark:text-white" id="instagram-handle" type="text" value="karolbaghelectronics"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="youtube-channel">YouTube Channel</label>
+<input class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm dark:text-white" id="youtube-channel" type="text" value="youtube.com/c/KarolBaghElectronics"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="current-offers">Current Offers &amp; Deals</label>
+<textarea class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm dark:text-white min-h-[80px]" id="current-offers">10% off on all accessories this weekend! Free screen protector with every smartphone purchase.</textarea>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="store-rules">Store Rules &amp; Guidelines</label>
+<textarea class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm dark:text-white min-h-[80px]" id="store-rules">- No exchange without original receipt.
+- 7 days return policy for defective items.
+- EMI options available on credit cards.</textarea>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="bot-guidelines">Bot Interaction Guidelines</label>
+<textarea class="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm dark:text-white min-h-[80px]" id="bot-guidelines">Always greet the customer politely. Recommend top-selling models first. If a customer asks for a discount, offer a maximum of 5% on approval.</textarea>
+</div>
+<div class="pt-4 flex justify-end gap-3 border-t border-gray-200 dark:border-gray-800 mt-6">
+<button class="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm" type="button">
+                                    Cancel
+                                </button>
+<button class="px-4 py-2 bg-primary hover:bg-blue-600 text-white rounded-lg text-sm font-medium transition-colors shadow-sm" type="submit">
+                                    Save Changes
+                                </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

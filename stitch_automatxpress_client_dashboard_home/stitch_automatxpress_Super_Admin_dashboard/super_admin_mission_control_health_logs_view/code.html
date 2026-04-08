@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutomatXpress Mission Control</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#57a5ff",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0d1117",
+                        "github-border": "#30363d",
+                        "github-bg-card": "#161b22",
+                        "github-bg-header": "#010409",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.6rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .graph-gradient {
+            background: linear-gradient(180deg, rgba(87, 165, 255, 0.1) 0%, rgba(87, 165, 255, 0) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-full flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-github-border bg-github-bg-header px-6 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark font-bold">rocket_launch</span>
+</div>
+<h1 class="text-slate-100 text-lg font-semibold tracking-tight">AutomatXpress <span class="text-primary font-light">Mission Control</span></h1>
+</div>
+<div class="hidden md:flex items-center gap-1 bg-github-bg-card border border-github-border rounded-lg px-2 py-1">
+<span class="material-symbols-outlined text-slate-400 text-sm">search</span>
+<input class="bg-transparent border-none text-sm text-slate-300 focus:ring-0 w-64 placeholder:text-slate-500" placeholder="Search logs, nodes, or APIs..." type="text"/>
+<span class="text-slate-500 text-xs px-1 border border-github-border rounded">/</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-400">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-lg">monitor_heart</span> System Health
+                    </a>
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-lg">api</span> API Perf
+                    </a>
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-lg">hub</span> Nodes
+                    </a>
+</nav>
+<div class="h-6 w-[1px] bg-github-border mx-2"></div>
+<button class="relative p-2 text-slate-400 hover:text-slate-100 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-github-bg-header"></span>
+</button>
+<button class="p-2 text-slate-400 hover:text-slate-100 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="size-8 rounded-full bg-slate-700 border border-github-border overflow-hidden">
+<img alt="User" data-alt="Admin user profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFAKJUTxCdmoyiaOKUAEQUKafJFzDYKeEKXgJPby__UOIAdmUZWXXo989D-4o78uijpF5iTLXfPZABQdCRD5cg7dz-WYgQcGBVFP0EuSeBEgcws3gn7mPkdYx6VFsL38sg7DYbUr_Hq1Rb4QnQB6se4kaM3mikGhFkF98NWzsp4fXLpXCh_qbaH7LrPuIx2tiueR1cdmEpt2d85yRysVADTYtqcHqdVzTmp0xj2s5VP_sbttjjedMmZcu9xdhXyyihyVmZwxntzU0"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-github-border bg-github-bg-header hidden xl:flex flex-col p-4 gap-6">
+<div class="space-y-1">
+<p class="text-[10px] uppercase font-bold text-slate-500 px-3 mb-2 tracking-widest">Global Overview</p>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Main Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-github-bg-card hover:text-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+<span class="text-sm font-medium">Real-time Metrics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-github-bg-card hover:text-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span class="text-sm font-medium">Command Center</span>
+</a>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] uppercase font-bold text-slate-500 px-3 mb-2 tracking-widest">Infrastucture</p>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-github-bg-card hover:text-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">database</span>
+<span class="text-sm font-medium">Databases</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-github-bg-card hover:text-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">cloud_sync</span>
+<span class="text-sm font-medium">Cloud Clusters</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-github-bg-card hover:text-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">security</span>
+<span class="text-sm font-medium">IAM &amp; Security</span>
+</a>
+</div>
+<div class="mt-auto border-t border-github-border pt-4">
+<div class="bg-github-bg-card rounded-lg p-3 border border-github-border">
+<p class="text-xs text-slate-400 mb-1">System Load</p>
+<div class="flex items-center gap-2 mb-2">
+<div class="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[42%]"></div>
+</div>
+<span class="text-[10px] font-mono text-primary">42.8%</span>
+</div>
+<p class="text-[10px] text-slate-500">Region: us-east-1</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
+<!-- Top Metric Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-github-bg-card border border-github-border rounded-lg p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-medium text-slate-400">Total Requests (24h)</span>
+<span class="material-symbols-outlined text-primary text-sm">trending_up</span>
+</div>
+<div class="flex items-end gap-2">
+<h3 class="text-2xl font-bold text-slate-100">8.42M</h3>
+<span class="text-xs text-green-400 font-medium pb-1">+12.4%</span>
+</div>
+</div>
+<div class="bg-github-bg-card border border-github-border rounded-lg p-4 border-l-4 border-l-primary">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-medium text-slate-400">P99 Latency</span>
+<span class="material-symbols-outlined text-primary text-sm">timer</span>
+</div>
+<div class="flex items-end gap-2">
+<h3 class="text-2xl font-bold text-slate-100">142ms</h3>
+<span class="text-xs text-red-400 font-medium pb-1">+5ms</span>
+</div>
+</div>
+<div class="bg-github-bg-card border border-github-border rounded-lg p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-medium text-slate-400">Error Rate</span>
+<span class="material-symbols-outlined text-green-400 text-sm">check_circle</span>
+</div>
+<div class="flex items-end gap-2">
+<h3 class="text-2xl font-bold text-slate-100">0.024%</h3>
+<span class="text-xs text-green-400 font-medium pb-1">-0.001%</span>
+</div>
+</div>
+<div class="bg-github-bg-card border border-github-border rounded-lg p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-medium text-slate-400">Active Workers</span>
+<span class="material-symbols-outlined text-slate-500 text-sm">group</span>
+</div>
+<div class="flex items-end gap-2">
+<h3 class="text-2xl font-bold text-slate-100">1,240</h3>
+<span class="text-xs text-slate-400 font-medium pb-1">Stable</span>
+</div>
+</div>
+</div>
+<!-- Primary System Health Graph Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-github-bg-card border border-github-border rounded-lg flex flex-col">
+<div class="p-4 border-b border-github-border flex items-center justify-between bg-github-bg-header/50 rounded-t-lg">
+<div class="flex items-center gap-4">
+<h3 class="text-sm font-semibold text-slate-100">Global API Performance</h3>
+<div class="flex gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary border border-primary/30 uppercase">Live</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-github-border text-slate-400 uppercase">1m Interval</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="size-8 flex items-center justify-center rounded border border-github-border text-slate-400 hover:text-slate-100"><span class="material-symbols-outlined text-lg">download</span></button>
+<button class="size-8 flex items-center justify-center rounded border border-github-border text-slate-400 hover:text-slate-100"><span class="material-symbols-outlined text-lg">fullscreen</span></button>
+</div>
+</div>
+<div class="p-6 flex-1 min-h-[300px] relative">
+<!-- Visual placeholder for a real graph -->
+<div class="absolute inset-0 p-6 flex items-end">
+<svg height="100%" preserveaspectratio="none" viewbox="0 0 1000 300" width="100%">
+<path class="fill-primary/5" d="M0,250 Q100,240 200,270 T400,220 T600,200 T800,230 T1000,180 V300 H0 Z"></path>
+<path d="M0,250 Q100,240 200,270 T400,220 T600,200 T800,230 T1000,180" fill="none" stroke="#57a5ff" stroke-width="2"></path>
+<path d="M0,280 Q100,275 200,290 T400,270 T600,280 T800,285 T1000,275" fill="none" stroke="#30363d" stroke-dasharray="4" stroke-width="1"></path>
+</svg>
+</div>
+<div class="relative z-10 grid grid-cols-6 h-full items-end pb-2">
+<div class="flex flex-col items-center gap-1">
+<span class="text-[10px] font-mono text-slate-500">08:00</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="text-[10px] font-mono text-slate-500">09:00</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="text-[10px] font-mono text-slate-500">10:00</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="text-[10px] font-mono text-slate-500">11:00</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="text-[10px] font-mono text-slate-500">12:00</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="text-[10px] font-mono text-slate-500 text-primary font-bold underline">NOW</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-github-bg-card border border-github-border rounded-lg flex flex-col">
+<div class="p-4 border-b border-github-border bg-github-bg-header/50 rounded-t-lg">
+<h3 class="text-sm font-semibold text-slate-100">Latency Heatmap</h3>
+</div>
+<div class="p-4 flex-1">
+<div class="grid grid-cols-7 gap-1">
+<!-- Simulated Heatmap Blocks -->
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/30 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/60 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-red-500/50 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/30 rounded-sm"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/80 rounded-sm"></div>
+<div class="aspect-square bg-primary/90 rounded-sm"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/30 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+</div>
+<div class="mt-4 flex justify-between items-center text-[10px] text-slate-500 font-mono">
+<span>Fast (&lt;20ms)</span>
+<div class="flex gap-1 h-2 w-24">
+<div class="bg-primary/10 flex-1"></div>
+<div class="bg-primary/40 flex-1"></div>
+<div class="bg-primary/80 flex-1"></div>
+<div class="bg-red-500/50 flex-1"></div>
+</div>
+<span>Slow (&gt;500ms)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Client Node Cards -->
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">hub</span> Active Client Nodes
+                        </h2>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-github-bg-card border border-github-border rounded-lg text-xs font-medium text-slate-300 hover:text-white transition-colors">Sort by Health</button>
+<button class="px-3 py-1 bg-primary text-background-dark rounded-lg text-xs font-bold hover:bg-primary/90 transition-colors">Add Node</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+<!-- Node Card 1 -->
+<div class="bg-github-bg-card border border-github-border rounded-lg overflow-hidden flex flex-col">
+<div class="p-4 flex items-start justify-between border-b border-github-border">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-green-500/10 flex items-center justify-center border border-green-500/20">
+<span class="material-symbols-outlined text-green-400">dns</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-100 leading-tight">Edge-Node-NY01</h4>
+<p class="text-[11px] text-slate-400 font-mono mt-0.5">ID: 4x-f2-88-11</p>
+</div>
+</div>
+<span class="bg-green-500/20 text-green-400 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wide">Healthy</span>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">Uptime:</span>
+<span class="text-slate-300 font-mono">14d 08h 12m</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">Throughput:</span>
+<span class="text-slate-300 font-mono">1,204 req/s</span>
+</div>
+<div class="pt-2 flex gap-2">
+<button class="flex-1 py-1.5 bg-github-border/50 text-slate-200 text-xs font-semibold rounded hover:bg-github-border transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">terminal</span> View Logs
+                                    </button>
+<button class="flex-1 py-1.5 bg-primary/10 text-primary text-xs font-semibold rounded border border-primary/20 hover:bg-primary/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">bug_report</span> Debug Mode
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Node Card 2 (Warning State) -->
+<div class="bg-github-bg-card border border-github-border rounded-lg overflow-hidden flex flex-col border-l-4 border-l-amber-500/50">
+<div class="p-4 flex items-start justify-between border-b border-github-border">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+<span class="material-symbols-outlined text-amber-400">dns</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-100 leading-tight">Worker-Berlin-04</h4>
+<p class="text-[11px] text-slate-400 font-mono mt-0.5">ID: ax-be-44-23</p>
+</div>
+</div>
+<span class="bg-amber-500/20 text-amber-400 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wide">Congested</span>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">Uptime:</span>
+<span class="text-slate-300 font-mono">02d 11h 05m</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">Throughput:</span>
+<span class="text-slate-300 font-mono">842 req/s</span>
+</div>
+<div class="pt-2 flex gap-2">
+<button class="flex-1 py-1.5 bg-github-border/50 text-slate-200 text-xs font-semibold rounded hover:bg-github-border transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">terminal</span> View Logs
+                                    </button>
+<button class="flex-1 py-1.5 bg-primary/10 text-primary text-xs font-semibold rounded border border-primary/20 hover:bg-primary/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">bug_report</span> Debug Mode
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Node Card 3 -->
+<div class="bg-github-bg-card border border-github-border rounded-lg overflow-hidden flex flex-col">
+<div class="p-4 flex items-start justify-between border-b border-github-border">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-green-500/10 flex items-center justify-center border border-green-500/20">
+<span class="material-symbols-outlined text-green-400">dns</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-100 leading-tight">Master-Tokyo-Core</h4>
+<p class="text-[11px] text-slate-400 font-mono mt-0.5">ID: tk-mn-12-00</p>
+</div>
+</div>
+<span class="bg-green-500/20 text-green-400 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wide">Healthy</span>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">Uptime:</span>
+<span class="text-slate-300 font-mono">45d 02h 30m</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">Throughput:</span>
+<span class="text-slate-300 font-mono">2,410 req/s</span>
+</div>
+<div class="pt-2 flex gap-2">
+<button class="flex-1 py-1.5 bg-github-border/50 text-slate-200 text-xs font-semibold rounded hover:bg-github-border transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">terminal</span> View Logs
+                                    </button>
+<button class="flex-1 py-1.5 bg-primary/10 text-primary text-xs font-semibold rounded border border-primary/20 hover:bg-primary/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">bug_report</span> Debug Mode
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Feed: Alerts and Stack Traces -->
+<aside class="w-80 border-l border-github-border bg-github-bg-header hidden 2xl:flex flex-col">
+<div class="p-4 border-b border-github-border flex items-center justify-between">
+<h3 class="text-sm font-semibold text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-red-500 text-lg">warning</span> System Alerts
+                    </h3>
+<span class="bg-red-500 text-background-dark text-[10px] px-1.5 py-0.5 rounded font-black">2</span>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4">
+<!-- Alert Item 1 -->
+<div class="flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex gap-2">
+<div class="size-2 rounded-full bg-red-500 mt-1.5 animate-pulse"></div>
+<div>
+<p class="text-xs font-bold text-slate-100">Critical: API-502-Gateway-Timeout</p>
+<p class="text-[10px] text-slate-500">Worker-Berlin-04 • 2m ago</p>
+</div>
+</div>
+</div>
+<div class="bg-github-bg-card border border-github-border rounded p-2 overflow-hidden">
+<p class="text-[9px] font-mono text-red-400 leading-relaxed truncate">Error: connect ETIMEDOUT 10.0.4.12:80</p>
+<div class="mt-2 bg-github-bg-header/50 p-2 rounded border border-github-border font-mono text-[9px] text-slate-400 overflow-x-auto whitespace-pre">at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+at process.processTicksAndRejections (node:internal/process/task_queues:95:5)</div>
+</div>
+<div class="flex gap-2 justify-end">
+<button class="text-[10px] text-primary hover:underline">Ignore</button>
+<button class="text-[10px] text-primary hover:underline">Restart Node</button>
+</div>
+</div>
+<div class="h-[1px] bg-github-border"></div>
+<!-- Alert Item 2 -->
+<div class="flex flex-col gap-2 opacity-80">
+<div class="flex items-start justify-between">
+<div class="flex gap-2">
+<div class="size-2 rounded-full bg-amber-500 mt-1.5"></div>
+<div>
+<p class="text-xs font-bold text-slate-100">Warning: Memory Usage &gt; 85%</p>
+<p class="text-[10px] text-slate-500">Edge-Node-NY01 • 14m ago</p>
+</div>
+</div>
+</div>
+<div class="bg-github-bg-card border border-github-border rounded p-2">
+<p class="text-[9px] font-mono text-amber-400 leading-relaxed italic">System process "worker-main" consuming 4.2GB RAM.</p>
+</div>
+</div>
+<!-- Log Stream Placeholder -->
+<div class="pt-4">
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Live Log Stream</p>
+<div class="space-y-2 font-mono text-[10px] leading-tight">
+<div class="text-slate-400"><span class="text-slate-600">12:44:01</span> <span class="text-green-400">INFO</span> Connection pool refreshed.</div>
+<div class="text-slate-400"><span class="text-slate-600">12:44:03</span> <span class="text-primary">HTTP</span> GET /api/v1/auth 200 (14ms)</div>
+<div class="text-slate-400"><span class="text-slate-600">12:44:05</span> <span class="text-primary">HTTP</span> POST /api/v1/tasks 201 (88ms)</div>
+<div class="text-slate-400"><span class="text-slate-600">12:44:07</span> <span class="text-slate-500">DEBUG</span> Cache hit for key "user_881".</div>
+<div class="text-slate-400"><span class="text-slate-600">12:44:10</span> <span class="text-amber-400">WARN</span> Slow query detected: 402ms.</div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-github-border">
+<button class="w-full py-2 bg-github-bg-card border border-github-border rounded text-xs text-slate-300 hover:text-white flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">launch</span> Open Full Console
+                    </button>
+</div>
+</aside>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0D1117",
+                        "card-dark": "#161b22",
+                        "border-dark": "#30363d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .tabular-nums { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- LEFT SIDEBAR -->
+<aside class="w-64 flex flex-col bg-background-light dark:bg-background-dark border-r border-slate-200 dark:border-border-dark">
+<div class="p-6 flex flex-col h-full">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold tracking-tight">AutomatXpress</h1>
+<span class="text-[10px] uppercase tracking-widest text-primary font-semibold">Super Admin</span>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                        Mission Control
+                    </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+                        All Clients
+                    </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px]">view_kanban</span>
+                        Sales Pipeline
+                    </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                        Settings
+                    </a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200 dark:border-border-dark">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden" data-alt="Admin user avatar">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHO7pfcjv1nyVX9dLOfY9vdvxUjPn1hS_6xppDWxGUzV7BGF1i8-4DgV1yEepgU8r5Ifd6fnEN9jixk21hLZU6U4J6xsLJXWCo33T-emXrFIJLGD-V5Hj-9oH2UgGNdFoSL1yzLB89XG1CTm-FFlCVWfsSiOTcPXqb9CMKxOPgrK7kgE0XoCIGjL8CBS9JIHP6K6-lbM5YfqYTLqbFQSh0FXClvjopPaTGyzVr6fWHig3EU2wHyU-YafjFjd9jBP4W7KOoCIZTJlU"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold">Stitch (SA)</span>
+<span class="text-[10px] text-slate-500">stitch@automat.io</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT AREA -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- TOP BAR -->
+<header class="h-16 flex items-center justify-between px-8 border-b border-slate-200 dark:border-border-dark bg-white/50 dark:bg-background-dark/50 backdrop-blur-md">
+<div class="flex items-center gap-4">
+<nav class="flex items-center text-sm font-medium gap-2">
+<span class="text-slate-400">Admin</span>
+<span class="text-slate-400">/</span>
+<span class="text-slate-900 dark:text-slate-100">Sales Pipeline</span>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center bg-slate-100 dark:bg-card-dark rounded-lg p-1 border border-slate-200 dark:border-border-dark">
+<button class="px-3 py-1 text-xs font-semibold rounded-md text-slate-500">Standard</button>
+<button class="px-3 py-1 text-xs font-semibold rounded-md bg-primary text-white shadow-sm">Business Mode</button>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white text-xs font-bold px-4 py-2 rounded-lg transition-all">
+                        + ADD LEAD
+                    </button>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">notifications</span>
+</div>
+</header>
+<!-- SCROLLABLE CONTENT -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<!-- KPI CARDS -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-5 rounded-xl">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Total Leads</p>
+<h3 class="text-2xl font-bold tabular-nums">124</h3>
+<div class="mt-2 text-[10px] text-emerald-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +12% from last month
+                        </div>
+</div>
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-5 rounded-xl">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Qualified</p>
+<h3 class="text-2xl font-bold tabular-nums">42</h3>
+<div class="mt-2 text-[10px] text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">checklist</span> 34% Conversion Rate
+                        </div>
+</div>
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-5 rounded-xl">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Demo Scheduled</p>
+<h3 class="text-2xl font-bold tabular-nums">15</h3>
+<div class="mt-2 text-[10px] text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 8 for this week
+                        </div>
+</div>
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-5 rounded-xl">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-1">Expected Revenue</p>
+<h3 class="text-2xl font-bold tabular-nums">₹12,40,000</h3>
+<div class="mt-2 text-[10px] text-emerald-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">payments</span> High probability pipeline
+                        </div>
+</div>
+</div>
+<!-- KANBAN BOARD -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+<!-- Column 1 -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">New Leads (2)</h4>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-400">more_horiz</span>
+</div>
+<div class="space-y-3">
+<div class="bg-white dark:bg-card-dark border-l-4 border-slate-400 p-4 rounded-lg shadow-sm border dark:border-border-dark">
+<h5 class="text-sm font-bold mb-1">Lajpat Nagar Phones</h5>
+<div class="flex items-center gap-2 text-[11px] text-slate-500 mb-3">
+<span class="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Web</span>
+<span>Oct 24, 2023</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-medium text-slate-400">Arjun Sharma</span>
+<span class="material-symbols-outlined text-[16px] text-slate-400">forum</span>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark border-l-4 border-slate-400 p-4 rounded-lg shadow-sm border dark:border-border-dark">
+<h5 class="text-sm font-bold mb-1">Sardar Electronics</h5>
+<div class="flex items-center gap-2 text-[11px] text-slate-500 mb-3">
+<span class="px-1.5 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-600 rounded">WhatsApp</span>
+<span>Oct 23, 2023</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-medium text-slate-400">Gurpreet Singh</span>
+<span class="material-symbols-outlined text-[16px] text-slate-400">forum</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 2 -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-500"></span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Qualified (2)</h4>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-400">more_horiz</span>
+</div>
+<div class="space-y-3">
+<div class="bg-white dark:bg-card-dark border-l-4 border-blue-500 p-4 rounded-lg shadow-sm border dark:border-border-dark">
+<h5 class="text-sm font-bold mb-1">Mobile World Noida</h5>
+<div class="flex items-center gap-2 text-[11px] text-slate-500 mb-3">
+<span class="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Web</span>
+<span>Oct 21, 2023</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-medium text-slate-400">Neha Gupta</span>
+<div class="flex -space-x-1">
+<div class="w-5 h-5 rounded-full border border-background-dark bg-primary text-[8px] flex items-center justify-center font-bold">S</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark border-l-4 border-blue-500 p-4 rounded-lg shadow-sm border dark:border-border-dark">
+<h5 class="text-sm font-bold mb-1">South Delhi Gadgets</h5>
+<div class="flex items-center gap-2 text-[11px] text-slate-500 mb-3">
+<span class="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Referral</span>
+<span>Oct 20, 2023</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-medium text-slate-400">Rohan Mehra</span>
+<span class="material-symbols-outlined text-[16px] text-slate-400">attach_file</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 3 -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Demo Scheduled (2)</h4>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-400">more_horiz</span>
+</div>
+<div class="space-y-3">
+<div class="bg-white dark:bg-card-dark border-l-4 border-primary p-4 rounded-lg shadow-sm border dark:border-border-dark">
+<h5 class="text-sm font-bold mb-1">Krishna Electronics</h5>
+<div class="flex items-center gap-2 text-[11px] mb-3">
+<span class="px-1.5 py-0.5 bg-primary/10 text-primary font-bold rounded">Tomorrow 4pm</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-medium text-slate-400">Amit Sharma</span>
+<span class="material-symbols-outlined text-[16px] text-primary">videocam</span>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark border-l-4 border-primary p-4 rounded-lg shadow-sm border dark:border-border-dark">
+<h5 class="text-sm font-bold mb-1">Vikas Mobiles</h5>
+<div class="flex items-center gap-2 text-[11px] text-slate-500 mb-3">
+<span class="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">Web</span>
+<span>Oct 18, 2023</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-medium text-slate-400">Vikas Singh</span>
+<span class="material-symbols-outlined text-[16px] text-slate-400">mail</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 4 -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Closing (2)</h4>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-400">more_horiz</span>
+</div>
+<div class="space-y-3">
+<div class="bg-white dark:bg-card-dark border-l-4 border-emerald-500 p-4 rounded-lg shadow-sm border dark:border-border-dark">
+<h5 class="text-sm font-bold mb-1">Pacific Mall Store</h5>
+<div class="flex items-center gap-2 text-[11px] text-emerald-500 font-bold mb-3">
+<span>Final Review</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-medium text-slate-400">Rajesh Kumar</span>
+<span class="material-symbols-outlined text-[16px] text-emerald-500">check_circle</span>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark border-l-4 border-emerald-500 p-4 rounded-lg shadow-sm border dark:border-border-dark">
+<h5 class="text-sm font-bold mb-1">Metro Electronics</h5>
+<div class="flex items-center gap-2 text-[11px] text-slate-500 mb-3">
+<span class="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 rounded">In-Person</span>
+<span>Oct 15, 2023</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-medium text-slate-400">S. Malhotra</span>
+<span class="material-symbols-outlined text-[16px] text-slate-400">assignment</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RECENT ACTIVITY TABLE -->
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark rounded-xl overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-border-dark flex items-center justify-between">
+<h3 class="text-sm font-bold">Recent Leads &amp; Activity</h3>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-slate-400">filter_list</span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">search</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 uppercase tracking-wider font-bold">
+<tr>
+<th class="px-6 py-3">Business Name</th>
+<th class="px-6 py-3">Source</th>
+<th class="px-6 py-3">Stage</th>
+<th class="px-6 py-3">Assigned To</th>
+<th class="px-6 py-3">Last Contact</th>
+<th class="px-6 py-3">Probability</th>
+<th class="px-6 py-3 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-border-dark">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-semibold">Lajpat Nagar Phones</td>
+<td class="px-6 py-4">Web</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium">Qualified</span>
+</td>
+<td class="px-6 py-4">Stitch (SA)</td>
+<td class="px-6 py-4 text-slate-500">2 hours ago</td>
+<td class="px-6 py-4 font-mono tabular-nums">60%</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+</button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">move_item</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-semibold">Sardar Electronics</td>
+<td class="px-6 py-4">WhatsApp</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium">New Lead</span>
+</td>
+<td class="px-6 py-4">Stitch (SA)</td>
+<td class="px-6 py-4 text-slate-500">5 hours ago</td>
+<td class="px-6 py-4 font-mono tabular-nums">10%</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-400"><span class="material-symbols-outlined text-[18px]">call</span></button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-400"><span class="material-symbols-outlined text-[18px]">mail</span></button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-400"><span class="material-symbols-outlined text-[18px]">move_item</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-semibold">Krishna Electronics</td>
+<td class="px-6 py-4">Web</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium">Demo Scheduled</span>
+</td>
+<td class="px-6 py-4">Stitch (SA)</td>
+<td class="px-6 py-4 text-slate-500">Yesterday</td>
+<td class="px-6 py-4 font-mono tabular-nums">85%</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-400"><span class="material-symbols-outlined text-[18px]">call</span></button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-400"><span class="material-symbols-outlined text-[18px]">mail</span></button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-400"><span class="material-symbols-outlined text-[18px]">move_item</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

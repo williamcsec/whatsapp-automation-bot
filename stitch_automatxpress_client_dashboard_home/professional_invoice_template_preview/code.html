@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Professional Invoice Template Preview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-10 py-4 shadow-sm z-10 sticky top-0">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-6 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">receipt_long</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">AutomatXpress Invoice Preview</h2>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center gap-2 rounded bg-slate-100 dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Download PDF
+                    </button>
+<button class="flex items-center justify-center gap-2 rounded bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[18px]">print</span>
+                        Print
+                    </button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex justify-center py-8 px-4 sm:px-8 overflow-y-auto">
+<!-- A4 Document Container -->
+<div class="bg-white dark:bg-slate-900 shadow-lg rounded-none sm:rounded-lg max-w-[850px] w-full flex flex-col p-8 sm:p-12 min-h-[1100px] border border-slate-200 dark:border-slate-700 relative">
+<!-- Invoice Header -->
+<div class="flex justify-between items-start mb-12 pb-6 border-b-2 border-primary/20">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 text-primary mb-2">
+<span class="material-symbols-outlined text-4xl">precision_manufacturing</span>
+<h1 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">AutomatXpress</h1>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm max-w-[250px]">Your trusted partner in automated electronic solutions.</p>
+</div>
+<div class="text-right flex flex-col items-end">
+<h2 class="text-4xl font-bold text-primary mb-2 uppercase tracking-widest">TAX INVOICE</h2>
+<p class="text-slate-600 dark:text-slate-300 font-medium">Invoice #: <span class="text-slate-900 dark:text-white">INV-2023-4829</span></p>
+<p class="text-slate-600 dark:text-slate-300 text-sm mt-1">Date: 24 Oct 2023</p>
+<p class="text-slate-600 dark:text-slate-300 text-sm">Order ID: ORD-992-11X</p>
+</div>
+</div>
+<!-- Addresses Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+<!-- Sold By -->
+<div class="bg-slate-50 dark:bg-slate-800/50 p-5 rounded border border-slate-100 dark:border-slate-800">
+<h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">Sold By</h3>
+<p class="font-bold text-slate-900 dark:text-white text-base mb-1">Karol Bagh Electronics</p>
+<p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-2">
+                                45, Arya Samaj Road, Karol Bagh<br/>
+                                New Delhi - 110005, India
+                            </p>
+<p class="text-slate-700 dark:text-slate-200 text-sm"><span class="font-medium text-slate-500">GSTIN:</span> 07AACCK4567R1Z9</p>
+<p class="text-slate-700 dark:text-slate-200 text-sm"><span class="font-medium text-slate-500">Phone:</span> +91 98765 43210</p>
+</div>
+<!-- Bill To -->
+<div class="bg-slate-50 dark:bg-slate-800/50 p-5 rounded border border-slate-100 dark:border-slate-800">
+<h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">Bill To</h3>
+<p class="font-bold text-slate-900 dark:text-white text-base mb-1">Rajesh Kumar</p>
+<p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-2">
+                                12B, Green Park Extension, Safdarjung Enclave<br/>
+                                New Delhi - 110016, India
+                            </p>
+<p class="text-slate-700 dark:text-slate-200 text-sm"><span class="font-medium text-slate-500">Phone:</span> +91 99887 76655</p>
+<p class="text-slate-700 dark:text-slate-200 text-sm"><span class="font-medium text-slate-500">Email:</span> rajesh.k@example.com</p>
+</div>
+</div>
+<!-- Items Table -->
+<div class="mb-8 rounded border border-slate-200 dark:border-slate-700 overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm">
+<th class="py-3 px-4 font-semibold w-[40%]">Product Description</th>
+<th class="py-3 px-4 font-semibold hidden sm:table-cell">HSN/SAC</th>
+<th class="py-3 px-4 font-semibold text-center">Qty</th>
+<th class="py-3 px-4 font-semibold text-right">Rate</th>
+<th class="py-3 px-4 font-semibold text-right hidden md:table-cell">Taxable Value</th>
+<th class="py-3 px-4 font-semibold text-right hidden sm:table-cell">GST %</th>
+<th class="py-3 px-4 font-semibold text-right">Total</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="border-b border-slate-200 dark:border-slate-700 last:border-0 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 px-4 text-slate-900 dark:text-white font-medium">Dell XPS 15 Laptop<br/><span class="text-xs text-slate-500 font-normal mt-1 block">Intel i7, 16GB RAM, 512GB SSD</span></td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 hidden sm:table-cell">84713010</td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 text-center">1</td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 text-right">₹ 1,45,000</td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 text-right hidden md:table-cell">₹ 1,45,000</td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 text-right hidden sm:table-cell">18%</td>
+<td class="py-4 px-4 text-slate-900 dark:text-white font-medium text-right">₹ 1,71,100</td>
+</tr>
+<tr class="border-b border-slate-200 dark:border-slate-700 last:border-0 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 px-4 text-slate-900 dark:text-white font-medium">Logitech MX Master 3S<br/><span class="text-xs text-slate-500 font-normal mt-1 block">Wireless Performance Mouse</span></td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 hidden sm:table-cell">84716060</td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 text-center">2</td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 text-right">₹ 8,500</td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 text-right hidden md:table-cell">₹ 17,000</td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 text-right hidden sm:table-cell">18%</td>
+<td class="py-4 px-4 text-slate-900 dark:text-white font-medium text-right">₹ 20,060</td>
+</tr>
+<tr class="border-b border-slate-200 dark:border-slate-700 last:border-0 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 px-4 text-slate-900 dark:text-white font-medium">Keychron K2 V2<br/><span class="text-xs text-slate-500 font-normal mt-1 block">Mechanical Keyboard, Brown Switch</span></td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 hidden sm:table-cell">84716040</td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 text-center">1</td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 text-right">₹ 7,500</td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 text-right hidden md:table-cell">₹ 7,500</td>
+<td class="py-4 px-4 text-slate-600 dark:text-slate-400 text-right hidden sm:table-cell">18%</td>
+<td class="py-4 px-4 text-slate-900 dark:text-white font-medium text-right">₹ 8,850</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Totals Section -->
+<div class="flex flex-col sm:flex-row justify-between items-start gap-8 mb-12 flex-grow">
+<!-- Notes -->
+<div class="w-full sm:w-1/2 text-sm text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/30 p-4 rounded">
+<h4 class="font-semibold text-slate-700 dark:text-slate-300 mb-2">Terms &amp; Conditions</h4>
+<ul class="list-disc pl-4 space-y-1">
+<li>Payment is due within 15 days.</li>
+<li>Goods once sold will not be taken back.</li>
+<li>Subject to Delhi jurisdiction.</li>
+</ul>
+</div>
+<!-- Summary -->
+<div class="w-full sm:w-80 ml-auto">
+<div class="grid grid-cols-2 gap-y-3 text-sm pb-4 border-b border-slate-200 dark:border-slate-700">
+<div class="text-slate-600 dark:text-slate-400">Sub-total:</div>
+<div class="text-right text-slate-900 dark:text-white font-medium">₹ 1,69,500</div>
+<div class="text-slate-600 dark:text-slate-400">CGST (9%):</div>
+<div class="text-right text-slate-900 dark:text-white font-medium">₹ 15,255</div>
+<div class="text-slate-600 dark:text-slate-400">SGST (9%):</div>
+<div class="text-right text-slate-900 dark:text-white font-medium">₹ 15,255</div>
+</div>
+<div class="grid grid-cols-2 gap-y-2 mt-4 bg-primary text-white p-4 rounded shadow-md">
+<div class="font-bold text-lg self-center text-primary-100">Grand Total:</div>
+<div class="text-right font-bold text-xl">₹ 2,00,010</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="mt-auto pt-8 border-t border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-end gap-6">
+<div class="text-center sm:text-left text-slate-600 dark:text-slate-400 italic">
+                            Thank you for your business!
+                        </div>
+<div class="flex flex-col items-center w-48">
+<div class="h-16 w-full border-b border-slate-400 dark:border-slate-500 mb-2 relative">
+<span class="absolute bottom-1 left-1/2 -translate-x-1/2 text-primary/40 font-script text-2xl transform -rotate-12 select-none">Approved</span>
+</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Authorized Signatory</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pending Invoices &amp; Multi-Select Billing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec37",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102213",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a361e",
+                        "border-light": "#dbe6dd",
+                        "border-dark": "#2d5e34",
+                        "text-light": "#111812",
+                        "text-dark": "#f0f4f1",
+                        "text-muted-light": "#618968",
+                        "text-muted-dark": "#8ebf96"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 bg-surface-dark text-white flex flex-col border-r border-border-dark hidden md:flex">
+<div class="h-16 flex items-center px-6 border-b border-border-dark/30">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<h1 class="text-xl font-bold tracking-tight">AutomatXpress</h1>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<ul class="space-y-1 px-3">
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span class="text-sm font-medium">Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/20 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span class="text-sm font-medium">Billing</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="p-4 border-t border-border-dark/30">
+<div class="flex items-center gap-3 px-3 py-2">
+<div class="w-8 h-8 rounded-full bg-slate-600 bg-cover bg-center" data-alt="User profile avatar image" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD23tdP_YNV4wmmODlzvymsb_GSen70gsdkDdz1eOzB_My4lxz77std5V5R1DtiLi4jHntfY4sSRJYxiRrieV4bEgQ4SVA7b63Oqqce2QrJrk8sxgoLg7WzEi7YmwaVK4mhMjT-tL1vpNBwQsAyISB0uDIA8UEBsG8R1Ay8BvTS5zJ_TEX-isP_qR9qUxGDOTsEDKun-HH3L9FOs1JI2YZQQAIOHlySxsFGk0KW9Wi6jhbxc6d7oxVblZDEEiSVVdLx1sTo899kWOk');"></div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-white truncate">Admin User</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-background-light dark:bg-background-dark">
+<!-- Topbar -->
+<header class="h-16 flex items-center justify-between px-6 bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark shrink-0">
+<div class="flex items-center gap-4 lg:hidden">
+<button class="p-2 -ml-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="text-lg font-bold">Billing</h2>
+</div>
+<h2 class="text-lg font-bold hidden lg:block">Pending Invoices</h2>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted-light dark:text-text-muted-dark text-[20px]">search</span>
+<input class="w-64 pl-10 pr-4 py-2 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-1 focus:ring-primary text-sm placeholder-text-muted-light dark:placeholder-text-muted-dark outline-none transition-shadow" placeholder="Search invoices..." type="text"/>
+</div>
+<button class="p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+</button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto p-6 flex gap-6">
+<!-- Left/Main Column -->
+<div class="flex-1 flex flex-col gap-6 min-w-0">
+<!-- Filters & Actions -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<select class="appearance-none pl-4 pr-10 py-2 rounded-lg bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark text-sm font-medium focus:ring-primary focus:border-primary outline-none cursor-pointer">
+<option>All Customers</option>
+<option>Acme Corp</option>
+<option>Global Tech</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[20px] text-text-muted-light dark:text-text-muted-dark">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none pl-4 pr-10 py-2 rounded-lg bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark text-sm font-medium focus:ring-primary focus:border-primary outline-none cursor-pointer">
+<option>Date Sold: Any</option>
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[20px] text-text-muted-light dark:text-text-muted-dark">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Table -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden flex-1 flex flex-col">
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark/50">
+<th class="py-3 px-4 w-12 text-center">
+<input checked="" class="rounded border-border-light dark:border-border-dark text-primary focus:ring-primary bg-transparent checked:bg-primary" type="checkbox"/>
+</th>
+<th class="py-3 px-4 text-sm font-semibold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider">Customer Name</th>
+<th class="py-3 px-4 text-sm font-semibold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider">Date Sold</th>
+<th class="py-3 px-4 text-sm font-semibold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider text-right">Total Amount (₹)</th>
+<th class="py-3 px-4 text-sm font-semibold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-light dark:divide-border-dark">
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/50 transition-colors bg-primary/5 dark:bg-primary/10">
+<td class="py-3 px-4 text-center">
+<input checked="" class="rounded border-border-light dark:border-border-dark text-primary focus:ring-primary bg-transparent checked:bg-primary" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<p class="text-sm font-medium">Acme Corp</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">ORD-2023-1042</p>
+</td>
+<td class="py-3 px-4 text-sm text-text-muted-light dark:text-text-muted-dark">Oct 12, 2023</td>
+<td class="py-3 px-4 text-sm font-medium text-right">₹45,000</td>
+<td class="py-3 px-4 text-right">
+<button class="text-sm font-bold text-primary hover:text-primary/80 transition-colors">Create Invoice</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/50 transition-colors bg-primary/5 dark:bg-primary/10">
+<td class="py-3 px-4 text-center">
+<input checked="" class="rounded border-border-light dark:border-border-dark text-primary focus:ring-primary bg-transparent checked:bg-primary" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<p class="text-sm font-medium">Global Tech</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">ORD-2023-1045</p>
+</td>
+<td class="py-3 px-4 text-sm text-text-muted-light dark:text-text-muted-dark">Oct 14, 2023</td>
+<td class="py-3 px-4 text-sm font-medium text-right">₹37,000</td>
+<td class="py-3 px-4 text-right">
+<button class="text-sm font-bold text-primary hover:text-primary/80 transition-colors">Create Invoice</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/50 transition-colors">
+<td class="py-3 px-4 text-center">
+<input class="rounded border-border-light dark:border-border-dark text-primary focus:ring-primary bg-transparent checked:bg-primary" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<p class="text-sm font-medium">Stark Industries</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">ORD-2023-1048</p>
+</td>
+<td class="py-3 px-4 text-sm text-text-muted-light dark:text-text-muted-dark">Oct 15, 2023</td>
+<td class="py-3 px-4 text-sm font-medium text-right">₹120,000</td>
+<td class="py-3 px-4 text-right">
+<button class="text-sm font-bold text-primary hover:text-primary/80 transition-colors">Create Invoice</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/50 transition-colors">
+<td class="py-3 px-4 text-center">
+<input class="rounded border-border-light dark:border-border-dark text-primary focus:ring-primary bg-transparent checked:bg-primary" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<p class="text-sm font-medium">Wayne Enterprises</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">ORD-2023-1051</p>
+</td>
+<td class="py-3 px-4 text-sm text-text-muted-light dark:text-text-muted-dark">Oct 16, 2023</td>
+<td class="py-3 px-4 text-sm font-medium text-right">₹55,000</td>
+<td class="py-3 px-4 text-right">
+<button class="text-sm font-bold text-primary hover:text-primary/80 transition-colors">Create Invoice</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-background-dark/50 transition-colors">
+<td class="py-3 px-4 text-center">
+<input class="rounded border-border-light dark:border-border-dark text-primary focus:ring-primary bg-transparent checked:bg-primary" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<p class="text-sm font-medium">Cyberdyne Systems</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">ORD-2023-1055</p>
+</td>
+<td class="py-3 px-4 text-sm text-text-muted-light dark:text-text-muted-dark">Oct 18, 2023</td>
+<td class="py-3 px-4 text-sm font-medium text-right">₹89,000</td>
+<td class="py-3 px-4 text-right">
+<button class="text-sm font-bold text-primary hover:text-primary/80 transition-colors">Create Invoice</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Sidebar (Template Preview) -->
+<div class="w-72 hidden xl:flex flex-col gap-6 flex-shrink-0">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark p-4 flex flex-col gap-4 sticky top-0">
+<div>
+<h3 class="text-base font-bold leading-tight">Invoice Template Preview</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark mt-1">Standard Professional Template</p>
+</div>
+<div class="w-full aspect-[1/1.4] bg-background-light dark:bg-background-dark rounded border border-border-light dark:border-border-dark shadow-sm overflow-hidden relative">
+<!-- Simulated Invoice Template Content -->
+<div class="absolute inset-0 p-3 flex flex-col gap-2 opacity-50 dark:opacity-30">
+<div class="w-1/3 h-4 bg-slate-300 rounded"></div>
+<div class="w-1/4 h-2 bg-slate-200 rounded mt-2"></div>
+<div class="w-1/4 h-2 bg-slate-200 rounded"></div>
+<div class="mt-4 border-t border-slate-200 pt-2 flex flex-col gap-1">
+<div class="w-full h-2 bg-slate-200 rounded"></div>
+<div class="w-full h-2 bg-slate-200 rounded"></div>
+<div class="w-full h-2 bg-slate-200 rounded"></div>
+</div>
+<div class="mt-auto ml-auto w-1/3 h-6 bg-slate-300 rounded"></div>
+</div>
+</div>
+<button class="w-full py-2 px-4 rounded-lg bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark text-sm font-medium hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                            Change Template
+                        </button>
+</div>
+</div>
+</div>
+<!-- Floating Action Bar -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 ml-32 hidden md:flex items-center gap-6 bg-surface-dark text-white px-6 py-4 rounded-xl shadow-2xl border border-border-dark z-10 w-auto max-w-2xl">
+<div class="flex items-center gap-2 border-r border-border-dark/50 pr-6">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-medium text-sm whitespace-nowrap">2 Products Selected</span>
+</div>
+<div class="flex-1">
+<span class="text-sm text-slate-400">Total:</span>
+<span class="ml-2 font-bold text-lg">₹82,000</span>
+</div>
+<button class="py-2.5 px-6 rounded-lg bg-primary text-slate-900 font-bold text-sm hover:bg-primary/90 transition-colors whitespace-nowrap shadow-[0_0_15px_rgba(19,236,55,0.3)]">
+                    Create Consolidated Invoice
+                </button>
+</div>
+</main>
+</div>
+</body></html>

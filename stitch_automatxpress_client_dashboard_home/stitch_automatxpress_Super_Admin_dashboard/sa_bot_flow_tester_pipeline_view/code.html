@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#161B22",
+                        "sidebar-dark": "#0D1117",
+                        "panel-dark": "#21262d"
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 10px;
+        }
+        .pipeline-line::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 32px;
+            bottom: -10px;
+            width: 2px;
+            background: #30363d;
+        }
+        .pipeline-item:last-child .pipeline-line::before {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased h-screen overflow-hidden">
+<div class="flex h-full w-full">
+<!-- Sidebar -->
+<aside class="w-64 bg-background-light dark:bg-sidebar-dark border-r border-slate-200 dark:border-slate-800 flex flex-col">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">terminal</span>
+</div>
+<div>
+<h1 class="font-bold text-sm tracking-tight">MISSION CONTROL</h1>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-widest">Bot Tester v2.4.0</p>
+</div>
+</div>
+<nav class="flex-1 p-4 space-y-2">
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-panel-dark rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="text-sm font-medium">Bot Flows</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-panel-dark rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-sm font-medium">Live Logs</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-panel-dark rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Analytics</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-panel-dark rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">key</span>
+<span class="text-sm font-medium">API Keys</span>
+</div>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<div class="size-8 rounded-full bg-slate-300 dark:bg-slate-700" data-alt="User avatar placeholder"></div>
+<div class="flex-1 overflow-hidden">
+<p class="text-xs font-semibold truncate">Admin User</p>
+<p class="text-[10px] text-slate-500 truncate">admin@mission.control</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm">logout</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark">
+<!-- Top Nav -->
+<header class="h-14 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-6 bg-white/50 dark:bg-sidebar-dark/50 backdrop-blur-md">
+<div class="flex items-center gap-4">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Environment:</span>
+<span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-500 text-[10px] font-bold border border-amber-500/20">PRODUCTION-MIRROR</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">notifications</span>
+<span class="absolute top-0 right-0 size-2 bg-primary rounded-full border-2 border-background-dark"></span>
+</div>
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">settings</span>
+<div class="h-6 w-px bg-slate-200 dark:border-slate-800"></div>
+<button class="bg-primary hover:bg-primary/90 text-white text-xs font-bold px-4 py-1.5 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+                    RUN TEST
+                </button>
+</div>
+</header>
+<!-- Tooling Layout -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Left Panel: Input & Config -->
+<section class="w-[420px] border-r border-slate-200 dark:border-slate-800 flex flex-col p-6 space-y-6 overflow-y-auto custom-scrollbar">
+<div>
+<label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 block">Client Scope</label>
+<select class="w-full bg-slate-100 dark:bg-panel-dark border-slate-200 dark:border-slate-700 rounded-lg text-sm p-3 focus:ring-primary focus:border-primary">
+<option>Karol Bagh Electronics</option>
+<option>Mumbai Retail Hub</option>
+<option>Bengaluru Tech Store</option>
+</select>
+</div>
+<div>
+<label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 block">Test Phone Number</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-sm">phone</span>
+<input class="w-full pl-9 bg-slate-100 dark:bg-panel-dark border-slate-200 dark:border-slate-700 rounded-lg text-sm p-3 focus:ring-primary focus:border-primary" placeholder="+91 98765 43210" type="text"/>
+</div>
+</div>
+<div>
+<label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3 block">Test Scenarios</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-primary text-white text-[11px] font-medium cursor-pointer shadow-sm">New buyer browses iPhone</span>
+<span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-panel-dark text-slate-600 dark:text-slate-300 text-[11px] font-medium border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary">Existing customer support</span>
+<span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-panel-dark text-slate-600 dark:text-slate-300 text-[11px] font-medium border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary">Order tracking flow</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col min-h-0">
+<label class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 block">Test Message</label>
+<textarea class="flex-1 w-full bg-slate-100 dark:bg-panel-dark border-slate-200 dark:border-slate-700 rounded-lg text-sm p-4 focus:ring-primary focus:border-primary resize-none font-mono" placeholder="Type message payload here...">"I am looking for the latest iPhone 15 Pro Max availability in the Karol Bagh store."</textarea>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between group cursor-pointer">
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Pre-load State</span>
+<span class="material-symbols-outlined text-sm text-slate-400 group-hover:text-primary transition-colors">expand_more</span>
+</div>
+<div class="space-y-2 p-3 bg-slate-50 dark:bg-sidebar-dark rounded-lg border border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between">
+<span class="text-xs text-slate-400">Force User Auth</span>
+<div class="w-8 h-4 bg-primary rounded-full relative flex items-center px-1">
+<div class="size-2 bg-white rounded-full absolute right-1"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-slate-400">Clear Cache on Start</span>
+<div class="w-8 h-4 bg-slate-300 dark:bg-slate-700 rounded-full relative flex items-center px-1">
+<div class="size-2 bg-white rounded-full absolute left-1"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-slate-400">Mock Payment Success</span>
+<div class="w-8 h-4 bg-primary rounded-full relative flex items-center px-1">
+<div class="size-2 bg-white rounded-full absolute right-1"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Panel: Trace & Metrics -->
+<section class="flex-1 flex flex-col bg-slate-50 dark:bg-[#1C2128] overflow-hidden">
+<div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+<h2 class="text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">route</span>
+                        PIPELINE TRACE
+                    </h2>
+<div class="flex gap-4">
+<div class="text-right">
+<p class="text-[10px] text-slate-500 uppercase">Latency</p>
+<p class="text-xs font-mono font-bold text-green-500">24ms</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-slate-500 uppercase">Node ID</p>
+<p class="text-xs font-mono font-bold">KBE_PROD_04</p>
+</div>
+</div>
+</div>
+<!-- Trace List -->
+<div class="flex-1 overflow-y-auto p-6 space-y-8 custom-scrollbar relative">
+<!-- Step 1 -->
+<div class="pipeline-item relative flex gap-6">
+<div class="pipeline-line relative z-10 flex flex-col items-center">
+<div class="size-10 rounded-full bg-slate-100 dark:bg-panel-dark border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-xs font-bold font-mono">01</div>
+</div>
+<div class="flex-1 bg-white dark:bg-sidebar-dark rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-400">webhook</span>
+<span class="text-sm font-bold">Inbound Webhook</span>
+<span class="px-1.5 py-0.5 rounded bg-blue-400/10 text-blue-400 text-[10px] font-bold">HTTP 200</span>
+</div>
+<span class="text-[10px] font-mono text-slate-500">8ms</span>
+</div>
+<div class="bg-slate-50 dark:bg-panel-dark/50 p-2 rounded text-[11px] font-mono text-slate-400 leading-relaxed">
+                                { "source": "whatsapp", "user_id": "wa_9876543210", "body": "iPhone 15 Pro Max..." }
+                            </div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="pipeline-item relative flex gap-6">
+<div class="pipeline-line relative z-10 flex flex-col items-center">
+<div class="size-10 rounded-full bg-slate-100 dark:bg-panel-dark border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-xs font-bold font-mono">02</div>
+</div>
+<div class="flex-1 bg-white dark:bg-sidebar-dark rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-400">security</span>
+<span class="text-sm font-bold">Rate Limit Check</span>
+<span class="px-1.5 py-0.5 rounded bg-green-400/10 text-green-400 text-[10px] font-bold">PASSED</span>
+</div>
+<span class="text-[10px] font-mono text-slate-500">2ms</span>
+</div>
+<p class="text-[11px] text-slate-500 italic">User quota: 142/5000 requests remaining this hour.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="pipeline-item relative flex gap-6">
+<div class="pipeline-line relative z-10 flex flex-col items-center">
+<div class="size-10 rounded-full bg-slate-100 dark:bg-panel-dark border-2 border-primary/50 flex items-center justify-center text-xs font-bold font-mono shadow-[0_0_15px_rgba(236,91,19,0.2)]">03</div>
+</div>
+<div class="flex-1 bg-white dark:bg-sidebar-dark rounded-xl border border-primary/30 p-4 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">smart_toy</span>
+<span class="text-sm font-bold">AI Intent Analysis</span>
+<span class="px-1.5 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-bold">MODEL_4_OMNI</span>
+</div>
+<span class="text-[10px] font-mono text-slate-500">245ms</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase mb-1">Detected Intent</p>
+<p class="text-xs text-primary font-bold">product_inquiry.availability</p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase mb-1">Confidence</p>
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1 bg-slate-200 dark:bg-panel-dark rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 98.4%"></div>
+</div>
+<span class="text-[10px] font-mono">98.4%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="pipeline-item relative flex gap-6">
+<div class="pipeline-line relative z-10 flex flex-col items-center">
+<div class="size-10 rounded-full bg-slate-100 dark:bg-panel-dark border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-xs font-bold font-mono">04</div>
+</div>
+<div class="flex-1 bg-white dark:bg-sidebar-dark rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-400">database</span>
+<span class="text-sm font-bold">Stock Service Lookup</span>
+<span class="px-1.5 py-0.5 rounded bg-purple-400/10 text-purple-400 text-[10px] font-bold">CACHED</span>
+</div>
+<span class="text-[10px] font-mono text-slate-500">112ms</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-slate-50 dark:bg-panel-dark/50 rounded border-l-2 border-purple-400">
+<span class="text-[11px] font-mono text-slate-400 uppercase">State Change</span>
+<span class="text-[11px] font-mono text-green-400">STOCK_FOUND: TRUE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Summary Panel -->
+<div class="bg-white dark:bg-sidebar-dark border-t border-slate-200 dark:border-slate-800 p-6 flex items-center justify-between">
+<div class="flex gap-10">
+<div>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">State Mutations</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-green-400">check_circle</span>
+<span class="text-xs font-mono">last_intent: inquiry</span>
+</div>
+</div>
+<div>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">Tokens Used</p>
+<div class="flex items-center gap-2 text-xs font-mono">
+<span class="text-slate-400">Prompt:</span> <span class="text-slate-200">1,204</span>
+<span class="text-slate-400 ml-2">Comp:</span> <span class="text-slate-200">32</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">Total Execution Time</p>
+<p class="text-3xl font-bold tracking-tighter text-primary">367<span class="text-base font-normal text-slate-500">ms</span></p>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

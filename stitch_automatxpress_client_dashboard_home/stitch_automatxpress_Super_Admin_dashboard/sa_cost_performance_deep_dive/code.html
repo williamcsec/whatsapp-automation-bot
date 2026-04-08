@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Super Admin - API Costs &amp; Performance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #ec5b1344;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 bg-white dark:bg-background-dark border-r border-slate-200 dark:border-primary/20 flex flex-col h-full">
+<div class="p-6 flex items-center gap-3 border-b border-slate-200 dark:border-primary/20">
+<div class="bg-primary p-2 rounded-lg">
+<span class="material-symbols-outlined text-white">monitoring</span>
+</div>
+<div>
+<h1 class="font-bold text-lg leading-tight tracking-tight">Admin Console</h1>
+<p class="text-xs text-slate-500 dark:text-primary/60">Global Overview</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto custom-scrollbar">
+<div class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-primary/10 transition-colors cursor-pointer text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-primary/10 transition-colors cursor-pointer text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Clients</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-xl bg-primary text-white shadow-lg shadow-primary/20 cursor-pointer">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">API Costs</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-primary/10 transition-colors cursor-pointer text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-sm font-medium">Performance</span>
+</div>
+<div class="pt-4 pb-2">
+<p class="px-3 text-[10px] font-bold uppercase tracking-widest text-slate-400">System</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-primary/10 transition-colors cursor-pointer text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/10 text-red-500 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Logout</span>
+</div>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-primary/20">
+<div class="flex items-center gap-3 bg-slate-50 dark:bg-primary/5 p-3 rounded-xl">
+<div class="size-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvJpkgmRCwlswNHyR2PYHgY-_8h0MeGGzskfKvPJCVIXg2xX4mHXeznYhpt7lZbU19fC16fm_ZG_R9j17fQZSjvkYBPKhQeLHCxnyIzB4pxe1FKOXpBfG0M_Y_UJh1Uv0TH7O64UrvfdrOpiNJGx4Qvuk4kUtsRanzOixDt8tO03cIQWmEzVVHSHVtghA99t8LUpBVHxSfQPXCsNNfLR8xbj4_SsT-BXKc6yQQwIwGPIhLTEwSHgfVmpa82W6VYDTxYUvXPXUqS8E"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold truncate">Super Admin</p>
+<p class="text-[10px] text-slate-500">View Profile</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark overflow-hidden">
+<!-- Top Bar -->
+<header class="h-16 flex items-center justify-between px-8 bg-white/50 dark:bg-background-dark/50 backdrop-blur-md border-b border-slate-200 dark:border-primary/20 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<h2 class="text-lg font-bold">API Costs &amp; Performance</h2>
+<div class="flex gap-2 items-center bg-green-500/10 text-green-500 px-2 py-1 rounded text-[10px] font-bold">
+<span class="size-2 rounded-full bg-green-500 animate-pulse"></span>
+                    SYSTEM HEALTHY
+                </div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative max-w-xs hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="bg-slate-100 dark:bg-primary/10 border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary w-64 transition-all" placeholder="Search resources..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-primary/10 rounded-full relative">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-primary/10 rounded-full">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">help</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Page Scroll Area -->
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+<!-- Header Section -->
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h3 class="text-3xl font-black tracking-tight mb-2">Client Performance Detail</h3>
+<p class="text-slate-500 dark:text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
+                        Data reflecting Oct 1, 2023 - Oct 31, 2023
+                    </p>
+</div>
+<div class="flex gap-3">
+<button class="bg-white dark:bg-primary/10 border border-slate-200 dark:border-primary/30 px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span> Export Report
+                    </button>
+<button class="bg-primary text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-primary/30">
+                        Refresh Data
+                    </button>
+</div>
+</div>
+<!-- Cost Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<!-- Groq API -->
+<div class="bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center justify-between mb-4">
+<span class="p-2 bg-slate-100 dark:bg-primary/20 rounded-lg material-symbols-outlined text-primary">psychology</span>
+<span class="text-green-500 text-xs font-bold bg-green-500/10 px-2 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +12%
+                        </span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Groq API Cost</p>
+<h4 class="text-2xl font-black">$1,240.50</h4>
+<p class="mt-2 text-[11px] text-slate-400">Trend vs last month: <span class="text-primary font-medium">Increased usage</span></p>
+</div>
+<!-- WhatsApp (YCloud) -->
+<div class="bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center justify-between mb-4">
+<span class="p-2 bg-slate-100 dark:bg-primary/20 rounded-lg material-symbols-outlined text-primary">chat_bubble</span>
+<span class="text-red-500 text-xs font-bold bg-red-500/10 px-2 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_down</span> -5%
+                        </span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">WhatsApp (YCloud)</p>
+<h4 class="text-2xl font-black">$850.20</h4>
+<p class="mt-2 text-[11px] text-slate-400">Trend vs last month: <span class="text-primary font-medium">Optimized volume</span></p>
+</div>
+<!-- Cashfree -->
+<div class="bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center justify-between mb-4">
+<span class="p-2 bg-slate-100 dark:bg-primary/20 rounded-lg material-symbols-outlined text-primary">account_balance_wallet</span>
+<span class="text-green-500 text-xs font-bold bg-green-500/10 px-2 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +2%
+                        </span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Cashfree Fees</p>
+<h4 class="text-2xl font-black">$320.15</h4>
+<p class="mt-2 text-[11px] text-slate-400">Trend vs last month: <span class="text-primary font-medium">Higher tx volume</span></p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+<!-- Main Chart -->
+<div class="lg:col-span-2 bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 rounded-xl p-6">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h5 class="text-lg font-bold">Infra Cost vs Revenue</h5>
+<p class="text-xs text-slate-500">Global profitability analysis</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary"></span>
+<span class="text-[10px] font-bold uppercase">Cost</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-emerald-500"></span>
+<span class="text-[10px] font-bold uppercase">Revenue</span>
+</div>
+<select class="bg-slate-100 dark:bg-primary/20 border-none text-[10px] font-bold rounded px-2 py-1 focus:ring-0">
+<option>LAST 7 DAYS</option>
+<option>LAST 30 DAYS</option>
+</select>
+</div>
+</div>
+<div class="flex items-baseline gap-4 mb-8">
+<span class="text-4xl font-black tracking-tighter">$2.4k <span class="text-sm font-normal text-slate-400">/</span> $8.2k</span>
+<span class="text-emerald-500 font-bold text-sm bg-emerald-500/10 px-2 py-1 rounded">+15% Profit Margin</span>
+</div>
+<div class="h-64 w-full relative">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 40">
+<!-- Revenue Curve (Green) -->
+<path d="M0 35 Q 15 25, 30 28 T 60 15 T 100 5" fill="none" stroke="#10b981" stroke-linecap="round" stroke-width="0.5"></path>
+<path d="M0 35 Q 15 25, 30 28 T 60 15 T 100 5 V 40 H 0 Z" fill="url(#revenueGradient)" opacity="0.1"></path>
+<!-- Cost Curve (Primary) -->
+<path d="M0 38 Q 15 35, 30 36 T 60 30 T 100 25" fill="none" stroke="#ec5b13" stroke-linecap="round" stroke-width="0.5"></path>
+<path d="M0 38 Q 15 35, 30 36 T 60 30 T 100 25 V 40 H 0 Z" fill="url(#costGradient)" opacity="0.1"></path>
+<defs>
+<lineargradient id="revenueGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#10b981"></stop>
+<stop offset="100%" stop-color="transparent"></stop>
+</lineargradient>
+<lineargradient id="costGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#ec5b13"></stop>
+<stop offset="100%" stop-color="transparent"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<line stroke="currentColor" stroke-opacity="0.05" stroke-width="0.1" x1="0" x2="100" y1="10" y2="10"></line>
+<line stroke="currentColor" stroke-opacity="0.05" stroke-width="0.1" x1="0" x2="100" y1="20" y2="20"></line>
+<line stroke="currentColor" stroke-opacity="0.05" stroke-width="0.1" x1="0" x2="100" y1="30" y2="30"></line>
+</svg>
+<div class="absolute bottom-0 w-full flex justify-between text-[10px] font-bold text-slate-400 pt-4 uppercase tracking-tighter">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+</div>
+<!-- Profit Optimization Box -->
+<div class="bg-primary/10 border border-primary/30 rounded-xl p-6 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-4 text-primary">
+<span class="material-symbols-outlined font-bold">lightbulb</span>
+<h5 class="font-bold text-lg">Profit Optimization</h5>
+</div>
+<p class="text-sm mb-6 text-slate-400">We've identified 3 areas to reduce your token burn and increase margin.</p>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<div class="shrink-0 w-6 h-6 bg-primary/20 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-primary">check</span>
+</div>
+<div>
+<p class="text-sm font-bold">Reduce Prompt Tokens</p>
+<p class="text-xs text-slate-400">Streamline system message to save ~200 tokens/call.</p>
+</div>
+</li>
+<li class="flex gap-3">
+<div class="shrink-0 w-6 h-6 bg-primary/20 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-primary">check</span>
+</div>
+<div>
+<p class="text-sm font-bold">Switch to Batching</p>
+<p class="text-xs text-slate-400">Non-urgent WhatsApp alerts can be batched every 4h.</p>
+</div>
+</li>
+<li class="flex gap-3">
+<div class="shrink-0 w-6 h-6 bg-primary/20 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-primary">check</span>
+</div>
+<div>
+<p class="text-sm font-bold">Cache Embeddings</p>
+<p class="text-xs text-slate-400">Re-using vector search results can save $40/week.</p>
+</div>
+</li>
+</ul>
+</div>
+<button class="mt-8 w-full bg-primary text-white py-3 rounded-xl font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
+                        Apply Suggestions
+                    </button>
+</div>
+</div>
+<!-- Live API Ticker -->
+<div class="bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 rounded-xl overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-primary/20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">bolt</span>
+<h5 class="text-lg font-bold">Live API Ticker</h5>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2 bg-red-500 rounded-full animate-ping"></span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Real-time Stream</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-slate-50 dark:bg-primary/10">
+<tr>
+<th class="px-6 py-3 text-[10px] font-bold uppercase text-slate-500">Timestamp</th>
+<th class="px-6 py-3 text-[10px] font-bold uppercase text-slate-500">Provider</th>
+<th class="px-6 py-3 text-[10px] font-bold uppercase text-slate-500">Endpoint</th>
+<th class="px-6 py-3 text-[10px] font-bold uppercase text-slate-500">Latency</th>
+<th class="px-6 py-3 text-[10px] font-bold uppercase text-slate-500">Status</th>
+<th class="px-6 py-3 text-[10px] font-bold uppercase text-slate-500">Tokens</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-primary/10">
+<tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 text-xs font-medium text-slate-400">14:23:01.042</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-slate-900 rounded flex items-center justify-center text-[10px] font-bold text-white">G</div>
+<span class="text-xs font-bold">Groq</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-mono text-primary">/v1/chat/completions</td>
+<td class="px-6 py-4 text-xs">124ms</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-black bg-green-500/10 text-green-500 border border-green-500/20">200 OK</span>
+</td>
+<td class="px-6 py-4 text-xs font-bold">1,402</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 text-xs font-medium text-slate-400">14:22:58.210</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-blue-500 rounded flex items-center justify-center text-[10px] font-bold text-white">W</div>
+<span class="text-xs font-bold">WhatsApp</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-mono text-primary">/v1/messages/send</td>
+<td class="px-6 py-4 text-xs">480ms</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-black bg-green-500/10 text-green-500 border border-green-500/20">200 OK</span>
+</td>
+<td class="px-6 py-4 text-xs font-bold">-</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 text-xs font-medium text-slate-400">14:22:52.115</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-emerald-600 rounded flex items-center justify-center text-[10px] font-bold text-white">C</div>
+<span class="text-xs font-bold">Cashfree</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-mono text-primary">/pg/orders/pay</td>
+<td class="px-6 py-4 text-xs">32ms</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-black bg-amber-500/10 text-amber-500 border border-amber-500/20">499 TIMEOUT</span>
+</td>
+<td class="px-6 py-4 text-xs font-bold">-</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 text-xs font-medium text-slate-400">14:22:45.003</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-slate-900 rounded flex items-center justify-center text-[10px] font-bold text-white">G</div>
+<span class="text-xs font-bold">Groq</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs font-mono text-primary">/v1/chat/completions</td>
+<td class="px-6 py-4 text-xs">156ms</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-black bg-green-500/10 text-green-500 border border-green-500/20">200 OK</span>
+</td>
+<td class="px-6 py-4 text-xs font-bold">890</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-slate-50 dark:bg-primary/5 flex justify-center border-t border-slate-200 dark:border-primary/20">
+<button class="text-xs font-bold text-primary hover:underline">View All Network Activity</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

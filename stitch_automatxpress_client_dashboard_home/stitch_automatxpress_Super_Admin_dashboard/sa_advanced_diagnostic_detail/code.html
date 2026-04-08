@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Super Admin Console - Karol Bagh Electronics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0d0d0d",
+                        "panel-dark": "#161616",
+                        "border-dark": "#262626",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"],
+                        "mono": ["JetBrains Mono"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #161616;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/30">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 flex flex-col border-r border-slate-200 dark:border-border-dark bg-white dark:bg-panel-dark">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 rounded bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">memory</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold tracking-tight">K.B. Electronics</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400">Super Admin</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+                    Clients
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+                    System Logs
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">database</span>
+                    Infrastructure
+                </a>
+<div class="pt-4 pb-2 px-3 text-[10px] font-bold uppercase text-slate-400 tracking-widest">Diagnostics</div>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+                    Flow Health
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">bug_report</span>
+                    Debug Mode
+                </a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-border-dark">
+<button class="w-full flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-widest bg-primary text-white rounded-lg hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+                    Export Data
+                </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Top Header -->
+<header class="h-16 flex items-center justify-between px-8 border-b border-slate-200 dark:border-border-dark bg-white dark:bg-background-dark z-10">
+<div class="flex items-center gap-4">
+<h2 class="text-lg font-semibold tracking-tight">Karol Bagh Electronics <span class="text-slate-400 font-normal mx-2">/</span> <span class="text-sm font-mono text-slate-500">kb_01_diagnostic</span></h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-slate-100 dark:bg-panel-dark border border-slate-200 dark:border-border-dark rounded-full px-3 py-1.5">
+<div class="size-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-xs font-bold text-primary uppercase">Debug Active</span>
+<span class="text-xs text-slate-500 font-mono border-l border-slate-300 dark:border-border-dark pl-2 ml-1">1:47:22 remaining</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-8 rounded-full bg-slate-200 dark:bg-border-dark flex items-center justify-center border border-slate-300 dark:border-slate-700">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8 space-y-8 custom-scrollbar">
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-panel-dark p-5 rounded-xl border border-slate-200 dark:border-border-dark">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">Total Tokens</span>
+<span class="text-[10px] font-bold text-green-500">+12.5%</span>
+</div>
+<div class="text-2xl font-bold tracking-tight">1.2M</div>
+<div class="mt-4 h-8 w-full opacity-50 bg-gradient-to-r from-primary/5 via-primary/20 to-primary/5 rounded">
+<!-- Abstract sparkline representation -->
+<div class="w-full h-full flex items-end gap-1 px-1">
+<div class="flex-1 bg-primary/40 h-1/2 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-3/4 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-2/3 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-full rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-5/6 rounded-t-sm"></div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-panel-dark p-5 rounded-xl border border-slate-200 dark:border-border-dark">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">Success Rate</span>
+<span class="text-[10px] font-bold text-green-500">+0.02%</span>
+</div>
+<div class="text-2xl font-bold tracking-tight">99.8%</div>
+<div class="mt-4 flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-slate-100 dark:bg-border-dark rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-[99.8%]"></div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-panel-dark p-5 rounded-xl border border-slate-200 dark:border-border-dark">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">Avg Latency</span>
+<span class="text-[10px] font-bold text-orange-500">-5ms</span>
+</div>
+<div class="text-2xl font-bold tracking-tight">340ms</div>
+<p class="text-[10px] text-slate-400 mt-4 italic">Optimized (p95: 410ms)</p>
+</div>
+<div class="bg-white dark:bg-panel-dark p-5 rounded-xl border border-slate-200 dark:border-border-dark">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">Active Threads</span>
+<span class="text-xs text-blue-500">Live</span>
+</div>
+<div class="text-2xl font-bold tracking-tight">42</div>
+<div class="mt-4 flex -space-x-2">
+<div class="size-6 rounded-full border-2 border-panel-dark bg-slate-700"></div>
+<div class="size-6 rounded-full border-2 border-panel-dark bg-slate-600"></div>
+<div class="size-6 rounded-full border-2 border-panel-dark bg-slate-500"></div>
+<div class="size-6 rounded-full border-2 border-panel-dark bg-slate-800 flex items-center justify-center text-[8px] font-bold">+39</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Live Logs Section -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-500">Live Log Stream</h3>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-green-500"></span>
+<span class="text-[10px] font-mono text-slate-400">Streaming active...</span>
+</div>
+</div>
+<div class="bg-black dark:bg-[#050505] rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden font-mono text-[11px] leading-relaxed shadow-2xl">
+<div class="bg-slate-100 dark:bg-panel-dark border-b border-slate-200 dark:border-border-dark px-4 py-2 flex items-center gap-4 text-slate-500">
+<span>TIMESTAMP</span>
+<span>LEVEL</span>
+<span>MESSAGE</span>
+</div>
+<div class="h-[500px] overflow-y-auto p-0 custom-scrollbar">
+<!-- Log Row: ERROR -->
+<div class="group border-b border-border-dark/50 hover:bg-red-500/5 transition-colors">
+<div class="flex items-start gap-4 px-4 py-3">
+<span class="text-slate-500 whitespace-nowrap">14:22:01.042</span>
+<span class="text-red-500 font-bold min-w-[50px]">ERROR</span>
+<span class="text-slate-200 flex-1">Failed to fetch Redis key: 'session_823' - Connection timeout 2000ms</span>
+<span class="material-symbols-outlined text-slate-600 text-sm group-hover:text-slate-400 cursor-pointer">expand_more</span>
+</div>
+<div class="hidden group-hover:block bg-red-950/20 px-12 pb-4 pt-1 border-t border-red-900/20">
+<pre class="text-red-400/80 leading-4">Stack Trace:
+  at RedisConnection.get (internal/redis.js:42)
+  at async SessionHandler.load (src/handlers/session.ts:112)
+  at async RequestHandler.handle (src/main.ts:89)</pre>
+</div>
+</div>
+<!-- Log Row: INFO -->
+<div class="flex items-start gap-4 px-4 py-3 border-b border-border-dark/50 hover:bg-white/5 transition-colors">
+<span class="text-slate-500 whitespace-nowrap">14:21:58.891</span>
+<span class="text-blue-400 font-bold min-w-[50px]">INFO</span>
+<span class="text-slate-200 flex-1">Outbound message dispatched via YCloud gateway (msg_id: YC_82931)</span>
+</div>
+<!-- Log Row: WARN -->
+<div class="group border-b border-border-dark/50 hover:bg-orange-500/5 transition-colors">
+<div class="flex items-start gap-4 px-4 py-3">
+<span class="text-slate-500 whitespace-nowrap">14:21:55.332</span>
+<span class="text-orange-400 font-bold min-w-[50px]">WARN</span>
+<span class="text-slate-200 flex-1">Latency spike detected in Groq LLM inference (latency: 1840ms)</span>
+<span class="material-symbols-outlined text-slate-600 text-sm group-hover:text-slate-400 cursor-pointer">expand_more</span>
+</div>
+</div>
+<!-- Log Row: DEBUG -->
+<div class="flex items-start gap-4 px-4 py-3 border-b border-border-dark/50 hover:bg-white/5 transition-colors">
+<span class="text-slate-500 whitespace-nowrap">14:21:50.001</span>
+<span class="text-slate-500 font-bold min-w-[50px]">DEBUG</span>
+<span class="text-slate-400 flex-1 italic">Payload: { client_id: 'KB_01', type: 'diagnostic_ping', status: 'ACK' }</span>
+</div>
+<!-- Repetitive logs for density -->
+<div class="flex items-start gap-4 px-4 py-3 border-b border-border-dark/50 hover:bg-white/5 transition-colors">
+<span class="text-slate-500 whitespace-nowrap">14:21:49.210</span>
+<span class="text-blue-400 font-bold min-w-[50px]">INFO</span>
+<span class="text-slate-200 flex-1">Inbound webhook received from Cashfree - event: 'payment.success'</span>
+</div>
+<div class="flex items-start gap-4 px-4 py-3 border-b border-border-dark/50 hover:bg-white/5 transition-colors">
+<span class="text-slate-500 whitespace-nowrap">14:21:48.005</span>
+<span class="text-blue-400 font-bold min-w-[50px]">INFO</span>
+<span class="text-slate-200 flex-1">Handshake verified with Model Engine cluster node-02</span>
+</div>
+<div class="flex items-start gap-4 px-4 py-3 border-b border-border-dark/50 hover:bg-white/5 transition-colors">
+<span class="text-slate-500 whitespace-nowrap">14:21:45.992</span>
+<span class="text-slate-500 font-bold min-w-[50px]">DEBUG</span>
+<span class="text-slate-400 flex-1 italic">Internal cache hit for key: 'kb_config_v2'</span>
+</div>
+<div class="flex items-start gap-4 px-4 py-3 border-b border-border-dark/50 hover:bg-white/5 transition-colors">
+<span class="text-slate-500 whitespace-nowrap">14:21:42.112</span>
+<span class="text-blue-400 font-bold min-w-[50px]">INFO</span>
+<span class="text-slate-200 flex-1">Database connection pool health check: OK (pool_size: 20)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel -->
+<div class="space-y-8">
+<!-- Infrastructure Health -->
+<div class="space-y-4">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-500">Client Infrastructure</h3>
+<div class="bg-white dark:bg-panel-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden divide-y divide-slate-200 dark:divide-border-dark">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500 text-[18px]">cloud_done</span>
+<span class="text-sm font-medium">Model Engine (Groq)</span>
+</div>
+<span class="text-[10px] bg-green-500/10 text-green-500 px-2 py-0.5 rounded font-bold uppercase">Healthy</span>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-orange-500 text-[18px]">storage</span>
+<span class="text-sm font-medium">Redis Cache</span>
+</div>
+<span class="text-[10px] bg-orange-500/10 text-orange-500 px-2 py-0.5 rounded font-bold uppercase">Degraded</span>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500 text-[18px]">payments</span>
+<span class="text-sm font-medium">Cashfree Gateway</span>
+</div>
+<span class="text-[10px] bg-green-500/10 text-green-500 px-2 py-0.5 rounded font-bold uppercase">Healthy</span>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500 text-[18px]">chat_bubble</span>
+<span class="text-sm font-medium">YCloud API</span>
+</div>
+<span class="text-[10px] bg-green-500/10 text-green-500 px-2 py-0.5 rounded font-bold uppercase">Healthy</span>
+</div>
+</div>
+</div>
+<!-- Redis Stats -->
+<div class="space-y-4">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-500">Redis Stats</h3>
+<div class="bg-white dark:bg-panel-dark rounded-xl border border-slate-200 dark:border-border-dark p-5">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold mb-1">Key Count</p>
+<p class="text-lg font-mono font-bold">14,291</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-500 uppercase font-bold mb-1">Memory Usage</p>
+<p class="text-lg font-mono font-bold">1.2 GB</p>
+</div>
+<div class="col-span-2">
+<p class="text-[10px] text-slate-500 uppercase font-bold mb-1">Hit Rate</p>
+<div class="flex items-center gap-3">
+<div class="flex-1 h-2 bg-slate-100 dark:bg-border-dark rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[82%]"></div>
+</div>
+<span class="text-xs font-mono">82%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Flow Health -->
+<div class="space-y-4">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-500">Flow Health</h3>
+<div class="bg-white dark:bg-panel-dark rounded-xl border border-slate-200 dark:border-border-dark p-5">
+<p class="text-xs text-slate-400 mb-4">Bot conversion success (last 24h)</p>
+<div class="h-24 w-full flex items-end gap-[2px]">
+<!-- Mini Graph Bars -->
+<div class="flex-1 bg-green-500/30 h-[70%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[75%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[80%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-red-500/40 h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[90%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[95%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[80%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[70%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[75%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[80%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[90%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[80%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[75%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[80%] rounded-t-sm"></div>
+<div class="flex-1 bg-green-500/30 h-[85%] rounded-t-sm"></div>
+</div>
+<div class="flex justify-between mt-2 text-[9px] font-bold text-slate-500">
+<span>24H AGO</span>
+<span>NOW</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
