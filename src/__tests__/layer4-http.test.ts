@@ -18,6 +18,9 @@ jest.mock('../services/groq', () => ({
     detectIntent: jest.fn().mockResolvedValue({ intent: 'general', action: 'general_chat', confidence: 0.9, products: [] })
 }));
 
+import { ENV } from '../config/env';
+ENV.YCLOUD_WEBHOOK_SECRET = '';
+
 const TEST_CLIENT = 'test_client_phase6';
 const TEST_WABA_ID = 'test_client_phase6'; // clientId = waba_id
 const TEST_PHONE = '919999999999';

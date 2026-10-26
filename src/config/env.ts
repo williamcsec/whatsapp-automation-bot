@@ -1,12 +1,20 @@
 import dotenv from 'dotenv';
 import path from 'path';
 
-// Load .env relative to the project root
-dotenv.config({ path: path.join(__dirname, '../../.env') });
+// Load .env relative to the project root (only if not already loaded, e.g., in Node.js backend)
+// Next.js automatically loads .env files, so we avoid manual loading if possible in that context.
+if (typeof window === 'undefined' && !process.env.SUPABASE_URL) {
+    try {
+        dotenv.config({ path: path.join(process.cwd(), '.env') });
+    } catch (e) {
+        // Fallback for non-standard CWDs
+        dotenv.config();
+    }
+}
 
 export const ENV = {
     // Application
-    PORT: process.env.PORT || 5678,
+    PORT: Number(process.env.PORT) || 5678,
 
     // Supabase
     DATABASE_URL: process.env.DATABASE_URL as string,

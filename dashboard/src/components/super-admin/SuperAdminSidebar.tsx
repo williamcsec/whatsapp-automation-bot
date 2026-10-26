@@ -6,9 +6,10 @@ import { usePathname } from 'next/navigation';
 const navItems = [
     { label: 'Mission Control', icon: 'dashboard', href: '/super-admin' },
     { label: 'All Clients', icon: 'group', href: '/super-admin/clients' },
-    { label: 'System Health', icon: 'monitor_heart', href: '/super-admin/system' },
-    { label: 'API Costs', icon: 'payments', href: '/super-admin/api-costs' },
-    { label: 'Business Overview', icon: 'query_stats', href: '/super-admin/business' },
+    { label: 'Live Logs', icon: 'history', href: '/super-admin/logs' },
+    { label: 'Flow Tester', icon: 'smart_toy', href: '/super-admin/tester' },
+    { label: 'API Costs', icon: 'payments', href: '/super-admin/costs' },
+    { label: 'Sales Pipeline', icon: 'conversion_path', href: '/super-admin/pipeline' },
 ];
 
 export function SuperAdminSidebar() {

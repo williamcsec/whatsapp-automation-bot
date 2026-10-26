@@ -36,7 +36,11 @@ export async function storeIncomingMessage(
     'inbound',
     data.message_type,
     data.text_body,
-    data.ycloud_timestamp ? new Date(data.ycloud_timestamp) : new Date(),
+    data.ycloud_timestamp ? (
+        /^\d+$/.test(data.ycloud_timestamp) 
+            ? new Date(parseInt(data.ycloud_timestamp) * 1000) 
+            : new Date(data.ycloud_timestamp)
+    ) : new Date(),
     isHumanOverride
   ];
 

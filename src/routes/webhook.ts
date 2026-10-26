@@ -90,7 +90,7 @@ webhookRouter.post('/whatsapp-incoming', async (req: Request, res: Response) => 
             return res.status(200).json({ status: 'invalid_phone_format' });
         }
         // Strip control characters and cap text length
-        if (messageData.text_body) {
+        if (typeof messageData.text_body === 'string') {
             messageData.text_body = messageData.text_body
                 .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '') // Strip control chars
                 .substring(0, 4096); // Cap at 4KB

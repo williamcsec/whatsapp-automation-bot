@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import { webhookRouter } from './routes/webhook';
 import { webhookTestRouter } from './routes/webhookTest';
+import { adminRouter } from './routes/admin';
 
 export const app = express();
 
@@ -55,3 +56,4 @@ app.get('/health', (req, res) => {
 // --- Mount Routers ---
 app.use('/webhook', webhookRouter);
 app.use('/webhook', webhookTestRouter);
+app.use('/api/admin', adminRouter);

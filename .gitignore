@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Environment variables - NEVER commit secrets
+.env
+.env.local
+.env.production
+.env.*
+
+# Build output
+dist/
+build/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test output
+coverage/
+playwright-report/
+test-results/
+
+# Editor config
+.vscode/settings.json
+.idea/
+
+# Agent/AI config dirs (internal tooling)
+.adal/
+.agent/
+.claude/
+
+# Redis dump
+dump.rdb
